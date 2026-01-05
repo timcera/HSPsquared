@@ -5,12 +5,13 @@ Based on MATLAB program by Seth Kenner, RESPEC
 License: LGPL2
 """
 
+import calendar
 import datetime
 import warnings
 
 import numpy as np
 import pandas as pd
-from numba import jit, njit
+from numba import njit
 
 # look up attributes NAME, data type (Integer; Real; String) and data length by attribute number
 attrinfo = {
@@ -52,7 +53,7 @@ freq = {
 }  # pandas date_range() frequency by TCODE, TGROUP
 
 
-def readWDM(wdmfile, hdffile, compress_output=False):
+def read_ts(wdmfile, wdm_no=None, dsns=None):
     iarray = np.fromfile(wdmfile, dtype=np.int32)
     farray = np.fromfile(wdmfile, dtype=np.float32)
 
@@ -71,86 +72,48 @@ def readWDM(wdmfile, hdffile, compress_output=False):
     nrecords = iarray[28]  # first record is File Definition Record
     ntimeseries = iarray[31]
 
-    dsnlist = []
-    for index in range(512, nrecords * 512, 512):
-        if (
-            not (
-                iarray[index] == 0
-                and iarray[index + 1] == 0
-                and iarray[index + 2] == 0
-                and iarray[index + 3] == 0
+    if dsns is None:
+        dsnlist = []
+        dsnlist.extend(
+            index
+            for index in range(512, nrecords * 512, 512)
+            if (
+                iarray[index] != 0
+                or iarray[index + 1] != 0
+                or iarray[index + 2] != 0
+                or iarray[index + 3] != 0
             )
             and iarray[index + 5] == 1
-        ):
-            dsnlist.append(index)
-    if len(dsnlist) != ntimeseries:
-        raise RuntimeError(
-            f"Wrong number of Time Series Records found expecting:{ntimeseries} found:{len(dsnlist)}"
         )
+        if len(dsnlist) != ntimeseries:
+            raise RuntimeError(
+                f"Wrong number of Time Series Records found expecting:{ntimeseries} found:{len(dsnlist)}"
+            )
+    else:
+        if isinstance(dsns, int):
+            dsns = [dsns]
+        elif not isinstance(dsns, (list, tuple)) or not all(
+            isinstance(dsn, int) for dsn in dsns
+        ):
+            raise ValueError("dsns must be an int or list/tuple of ints")
+        dsnlist = dsns
 
-    with pd.HDFStore(hdffile) as store:
-        summary = []
-        summaryindx = []
-
-        # check to see which extra attributes are on each dsn
-        columns_to_add = []
-        search = ["STAID", "STNAM", "SCENARIO", "CONSTITUENT", "LOCATION"]
-        for att in search:
-            found_in_all = True
-            for index in dsnlist:
-                dattr = {}
-                psa = iarray[index + 9]
-                if psa > 0:
-                    sacnt = iarray[index + psa - 1]
-                for i in range(psa + 1, psa + 1 + 2 * sacnt, 2):
-                    id = iarray[index + i]
-                    ptr = iarray[index + i + 1] - 1 + index
-                    if id not in attrinfo:
-                        continue
-                    name, atype, length = attrinfo[id]
-                    if atype == "I":
-                        dattr[name] = iarray[ptr]
-                    elif atype == "R":
-                        dattr[name] = farray[ptr]
-                    else:
-                        dattr[name] = "".join(
-                            [
-                                _inttostr(iarray[k])
-                                for k in range(ptr, ptr + length // 4)
-                            ]
-                        ).strip()
-                if att not in dattr:
-                    found_in_all = False
-            if found_in_all:
-                columns_to_add.append(att)
-
+    # check to see which extra attributes are on each dsn
+    columns_to_add = []
+    search = ["STAID", "STNAM", "SCENARIO", "CONSTITUENT", "LOCATION"]
+    for att in search:
+        found_in_all = True
         for index in dsnlist:
-            # get layout information for TimeSeries Dataset frame
-            dsn = iarray[index + 4]
+            dattr = {}
             psa = iarray[index + 9]
             if psa > 0:
                 sacnt = iarray[index + psa - 1]
-            pdat = iarray[index + 10]
-            pdatv = iarray[index + 11]
-            frepos = iarray[index + pdat]
-
-            print(f"{dsn} reading from wdm")
-            # get attributes
-            dattr = {
-                "TSBDY": 1,
-                "TSBHR": 1,
-                "TSBMO": 1,
-                "TSBYR": 1900,
-                "TFILL": -999.0,
-            }  # preset defaults
             for i in range(psa + 1, psa + 1 + 2 * sacnt, 2):
-                id = iarray[index + i]
+                lid = iarray[index + i]
                 ptr = iarray[index + i + 1] - 1 + index
-                if id not in attrinfo:
-                    # print('PROGRAM ERROR: ATTRIBUTE INDEX not found', id, 'Attribute pointer', iarray[index + i+1])
+                if lid not in attrinfo:
                     continue
-
-                name, atype, length = attrinfo[id]
+                name, atype, length = attrinfo[lid]
                 if atype == "I":
                     dattr[name] = iarray[ptr]
                 elif atype == "R":
@@ -159,75 +122,96 @@ def readWDM(wdmfile, hdffile, compress_output=False):
                     dattr[name] = "".join(
                         [_inttostr(iarray[k]) for k in range(ptr, ptr + length // 4)]
                     ).strip()
+            if att not in dattr:
+                found_in_all = False
+        if found_in_all:
+            columns_to_add.append(att)
 
-            # Get timeseries timebase data
-            records = []
-            offsets = []
-            for i in range(pdat + 1, pdatv - 1):
-                a = iarray[index + i]
-                if a != 0:
-                    record, offset = _splitposition(a)
-                    records.append(record)
-                    offsets.append(offset)
-            if len(records) == 0:
+    collect = {}
+    for index in dsnlist:
+        # get layout information for TimeSeries Dataset frame
+        dsn = iarray[index + 4]
+        psa = iarray[index + 9]
+        if psa > 0:
+            sacnt = iarray[index + psa - 1]
+        pdat = iarray[index + 10]
+        pdatv = iarray[index + 11]
+
+        print(f"{dsn} reading from wdm")
+        # get attributes
+        dattr = {
+            "TSBDY": 1,
+            "TSBHR": 1,
+            "TSBMO": 1,
+            "TSBYR": 1900,
+            "TFILL": -999.0,
+        }  # preset defaults
+        for i in range(psa + 1, psa + 1 + 2 * sacnt, 2):
+            lid = iarray[index + i]
+            ptr = iarray[index + i + 1] - 1 + index
+            if lid not in attrinfo:
+                # print('PROGRAM ERROR: ATTRIBUTE INDEX not found', id, 'Attribute pointer', iarray[index + i+1])
                 continue
 
-            # calculate number of data points in each group, tindex is final index for storage
-            tgroup = dattr["TGROUP"]
-            tstep = dattr["TSSTEP"]
-            tcode = dattr["TCODE"]
-
-            records = np.asarray(records)
-            offsets = np.asarray(offsets)
-
-            dates, values, stop_datetime = _process_groups(
-                iarray, farray, records, offsets, tgroup
-            )
-            stop_datetime = datetime.datetime(*_bits_to_date(stop_datetime))
-            dates = np.array(dates)
-            dates_converted = _date_convert(
-                dates,
-                date_epoch,
-                dt_year,
-                dt_month,
-                dt_day,
-                dt_hour,
-                dt_minute,
-                dt_second,
-            )
-            series = pd.Series(values, index=dates_converted)
-            try:
-                series.index.freq = str(tstep) + freq[tcode]
-            except ValueError:
-                series.index.freq = None
-
-            dsname = f"TIMESERIES/TS{dsn:03d}"
-            if compress_output:
-                series.to_hdf(store, key=dsname, complib="blosc", complevel=9)
+            name, atype, length = attrinfo[lid]
+            if atype == "I":
+                dattr[name] = iarray[ptr]
+            elif atype == "R":
+                dattr[name] = farray[ptr]
             else:
-                series.to_hdf(store, key=dsname, format="t", data_columns=True)
+                dattr[name] = "".join(
+                    [_inttostr(iarray[k]) for k in range(ptr, ptr + length // 4)]
+                ).strip()
 
-            data = [
-                str(series.index[0]),
-                str(stop_datetime),
-                str(tstep) + freq[tcode],
-                len(series),
-                dattr["TSTYPE"],
-                dattr["TFILL"],
-            ]
-            columns = ["Start", "Stop", "Freq", "Length", "TSTYPE", "TFILL"]
-            for x in columns_to_add:
-                if x in dattr:
-                    data.append(dattr[x])
-                    columns.append(x)
+        # Get timeseries timebase data
+        records = []
+        offsets = []
+        for i in range(pdat + 1, pdatv - 1):
+            a = iarray[index + i]
+            if a != 0:
+                record, offset = _splitposition(a)
+                records.append(record)
+                offsets.append(offset)
+        if not records:
+            continue
 
-            summary.append(data)
-            summaryindx.append(dsname[11:])
+        # calculate number of data points in each group, tindex is final index
+        # for storage
+        tgroup = dattr["TGROUP"]
+        tstep = dattr["TSSTEP"]
+        tcode = dattr["TCODE"]
 
-        dfsummary = pd.DataFrame(summary, index=summaryindx, columns=columns)
-        store.put("TIMESERIES/SUMMARY", dfsummary, format="t", data_columns=True)
+        records = np.asarray(records)
+        offsets = np.asarray(offsets)
 
-    return dfsummary
+        dates, values, stop_datetime = _process_groups(
+            iarray, farray, records, offsets, tgroup
+        )
+        stop_datetime = datetime.datetime(*_bits_to_date(stop_datetime))
+        dates = np.array(dates)
+        dates_converted = _date_convert(
+            dates,
+            date_epoch,
+            dt_year,
+            dt_month,
+            dt_day,
+            dt_hour,
+            dt_minute,
+            dt_second,
+        )
+        series = pd.Series(values, index=dates_converted)
+        try:
+            series.index.freq = str(tstep) + freq[tcode]
+        except ValueError:
+            series.index.freq = None
+
+        if wdm_no:
+            dsname = f"TIMESERIES/WDM{wdm_no}/TS{dsn:03d}"
+        else:
+            dsname = f"TIMESERIES/TS{dsn:03d}"
+        collect[dsname] = series
+
+    return collect
 
 
 @njit
@@ -274,8 +258,7 @@ def _bits_to_date(x):
 
 @njit
 def _date_to_bits(year, month, day, hour, minute, second):
-    x = year << 26 | month << 22 | day << 17 | hour << 12 | minute << 6 | second
-    return x
+    return year << 26 | month << 22 | day << 17 | hour << 12 | minute << 6 | second
 
 
 @njit
@@ -330,22 +313,14 @@ def _days_in_month(year, month):
     elif month in (4, 6, 9, 11):
         return 30
     elif month == 2:
-        if _is_leapyear(year):
-            return 29
-        else:
-            return 28
+        return 29 if _is_leapyear(year) else 28
 
 
 @njit
 def _is_leapyear(year):
     if year % 400 == 0:
         return True
-    if year % 100 == 0:
-        return False
-    if year % 4 == 0:
-        return True
-    else:
-        return False
+    return False if year % 100 == 0 else year % 4 == 0
 
 
 @njit
@@ -371,7 +346,7 @@ def _process_groups(iarray, farray, records, offsets, tgroup):
     date_array = [0]  # need initialize with a type for numba
     value_array = [0.0]
 
-    for i in range(0, len(records)):
+    for i in range(len(records)):
         record = records[i]
         offset = offsets[i]
         index = record * 512 + offset
@@ -385,14 +360,14 @@ def _process_groups(iarray, farray, records, offsets, tgroup):
             nval, ltstep, ltcode, comp, qual = _splitcontrol(iarray[index])
             # compressed - only has single value which applies to full range
             if comp == 1:
-                for i in range(0, nval, 1):
+                for i in range(nval):
                     date_array.append(current_date)
                     current_date = _increment_date(current_date, ltcode, ltstep)
                     value_array.append(farray[index + 1])
                 index += 2
                 offset += 2
             else:
-                for i in range(0, nval, 1):
+                for i in range(nval):
                     date_array.append(current_date)
                     current_date = _increment_date(current_date, ltcode, ltstep)
                     value_array.append(farray[index + 1 + i])
@@ -418,10 +393,9 @@ def get_wdm_data_set(wdmfile, attributes):
     Get single time series data from a WDM file
     based on a collection of attributes (name-value pairs)
     """
-    if attributes == None:
+    if attributes is None:
         return None
 
-    search_loc = attributes["location"]
     search_cons = attributes["constituent"]
     search_dsn = attributes["dsn"]
 
@@ -435,27 +409,27 @@ def get_wdm_data_set(wdmfile, attributes):
     ntimeseries = iarray[31]
 
     dsnlist = []
-    for index in range(512, nrecords * 512, 512):
+    dsnlist.extend(
+        index
+        for index in range(512, nrecords * 512, 512)
         if (
-            not (
-                iarray[index] == 0
-                and iarray[index + 1] == 0
-                and iarray[index + 2] == 0
-                and iarray[index + 3] == 0
-            )
-            and iarray[index + 5] == 1
-        ):
-            dsnlist.append(index)
+            iarray[index] != 0
+            or iarray[index + 1] != 0
+            or iarray[index + 2] != 0
+            or iarray[index + 3] != 0
+        )
+        and iarray[index + 5] == 1
+    )
     if len(dsnlist) != ntimeseries:
         print("PROGRAM ERROR, wrong number of DSN records found")
 
+    """
     summary = []
     summaryindx = []
 
     # check to see which extra attributes are on each dsn
     columns_to_add = []
     search = ["STAID", "STNAM", "SCENARIO", "CONSTITUENT", "LOCATION"]
-    """
     for att in search:
         found_in_all = True
         for index in dsnlist:
@@ -502,13 +476,13 @@ def get_wdm_data_set(wdmfile, attributes):
             "TFILL": -999.0,
         }  # preset defaults
         for i in range(psa + 1, psa + 1 + 2 * sacnt, 2):
-            id = iarray[index + i]
+            lid = iarray[index + i]
             ptr = iarray[index + i + 1] - 1 + index
-            if id not in attrinfo:
+            if lid not in attrinfo:
                 # print('PROGRAM ERROR: ATTRIBUTE INDEX not found', id, 'Attribute pointer', iarray[index + i+1])
                 continue
 
-            name, atype, length = attrinfo[id]
+            name, atype, length = attrinfo[lid]
             if atype == "I":
                 dattr[name] = iarray[ptr]
             elif atype == "R":
@@ -518,14 +492,10 @@ def get_wdm_data_set(wdmfile, attributes):
                     [itostr(iarray[k]) for k in range(ptr, ptr + length // 4)]
                 ).strip()
 
-        if search_dsn > 0 and search_dsn == dsn:
-            pass
-        else:
-            # could do more attribute based filtering here such as constituent, location etc
-            if search_cons == dattr["TSTYPE"]:
-                pass
-            else:
-                continue
+        if (
+            search_dsn > 0 and search_dsn == dsn or search_cons != dattr["TSTYPE"]
+        ) and (search_dsn <= 0 or search_dsn != dsn):
+            continue
 
         # Get timeseries timebase data
         records = []
@@ -533,7 +503,7 @@ def get_wdm_data_set(wdmfile, attributes):
             a = iarray[index + i]
             if a != 0:
                 records.append(splitposition(a))
-        if len(records) == 0:
+        if not records:
             continue  # WDM preallocation, but nothing saved here yet
 
         srec, soffset = records[0]
@@ -570,9 +540,7 @@ def get_wdm_data_set(wdmfile, attributes):
             )
 
         ts = pd.Series(floats[:findex], index=tindex[:findex])
-        df = pd.DataFrame({"ts": ts})
-        return df
-
+        return pd.DataFrame({"ts": ts})
     return None
 
 
@@ -644,23 +612,17 @@ def getfloats(
     cntr = 0
     while cntr < count and findex < len(floats):
         if index == stop - 1:
-            print(
-                "Problem?", str(rec)
-            )  # perhaps not, block cannot start at word 512 of a record because not spot for values
+            print("Problem?", rec)
         if index >= stop - 1:
             rec = (
                 iarray[rec * 512 + 3] - 1
             )  # 3 is forward data pointer, -1 is python indexing
-            print("Process record ", str(rec))
+            print("Process record ", rec)
             index = rec * 512 + 4  # 4 is index of start of new data
             stop = (rec + 1) * 512
 
         x = iarray[index]  # block control word or maybe date word at start of group
-        nval = x >> 16
-        ltstep = x >> 10 & 0x3F
-        ltcode = x >> 7 & 0x7
-        comp = x >> 5 & 0x3
-        qual = x & 0x1F
+        nval, ltstep, ltcode, comp, _ = _splitcontrol(x)
         ldate = todatetime()  # dummy
         if ltstep != tstep or ltcode != tcode:
             nval = adjustNval(ldate, ltstep, tstep, ltcode, tcode, comp, nval)
@@ -671,19 +633,9 @@ def getfloats(
                         print("Problem resolved - date found ", ldate)
                         nval = 1
                     else:
-                        print(
-                            "BlockConversionFailure at ",
-                            str(rec + 1),
-                            " ",
-                            str(index % 512),
-                        )
-                except:
-                    print(
-                        "BlockConversionFailure at ",
-                        str(rec + 1),
-                        " ",
-                        str(index % 512),
-                    )
+                        print("BlockConversionFailure at ", rec + 1, " ", index % 512)
+                except:  # noqa E722
+                    print("BlockConversionFailure at ", rec + 1, " ", index % 512)
                 # try next word
                 comp = -1
         index += 1
@@ -695,7 +647,7 @@ def getfloats(
                 findex += 1
             index += nval
         elif comp > 0:
-            for k in range(nval):
+            for _ in range(nval):
                 if findex >= len(floats):
                     return findex
                 floats[findex] = farray[index]
@@ -712,66 +664,53 @@ def adjustNval(ldate, ltstep, tstep, ltcode, tcode, comp, nval):
     lnval = nval
     if comp != 1:
         nval = -1  # only can adjust compressed data
+    elif tcode == 2:  # minutes
+        if ltcode == 6:  # from years
+            ldays = 366 if calendar.isleap(ldate.year) else 365
+            nval = ldays * lnval * 60 / ltstep
+        elif ltcode == 5:  # from months
+            ldateRange = calendar.monthrange(ldate.year, ldate.month)
+            print("month block ", ldateRange)
+            nval = ldateRange[2] * lnval * 60 / ltstep
+        elif ltcode == 4:  # from days
+            nval = lnval * 60 / ltstep
+        elif ltcode == 3:  # from hours
+            nval = lnval * 1440 / ltstep
+        else:  # dont know how to convert
+            nval = -1
+    elif tcode == 3:  # hours
+        nval = -1 if ltcode == 6 or ltcode == 5 or ltcode != 4 else lnval * 24 / ltstep
     else:
-        if tcode == 2:  # minutes
-            if ltcode == 6:  # from years
-                if leap_year(ldate.year):
-                    ldays = 366
-                else:
-                    ldays = 365
-                nval = ldays * lnval * 60 / ltstep
-            elif ltcode == 5:  # from months
-                from calendar import monthrange
-
-                ldateRange = monthrange(ldate.year, ldate.month)
-                print("month block ", ldateRange)
-                nval = ldateRange[2] * lnval * 60 / ltstep
-            elif ltcode == 4:  # from days
-                nval = lnval * 60 / ltstep
-            elif ltcode == 3:  # from hours
-                nval = lnval * 1440 / ltstep
-            else:  # dont know how to convert
-                nval = -1
-        elif tcode == 3:  # hours
-            if ltcode == 6:  # from years
-                nval = -1
-            elif ltcode == 5:  # from months
-                nval = -1
-            elif ltcode == 4:  # from days
-                nval = lnval * 24 / ltstep
-            else:  # dont know how to convert
-                nval = -1
-        else:
-            nval = -1  # dont know how to convert
+        nval = -1  # dont know how to convert
 
     nval = int(nval)
     if nval == -1:  # conversion problem
         print(
             "Conversion problem (tcode ",
-            str(tcode),
+            tcode,
             ", ",
-            str(ltcode),
+            ltcode,
             "), (tstep ",
-            str(tstep),
+            tstep,
             ",",
-            str(ltstep),
+            ltstep,
             "), (comp ",
-            str(comp),
+            comp,
             ")",
         )
     else:
         print(
             "Conversion complete (tcode ",
-            str(tcode),
+            tcode,
             ", ",
-            str(ltcode),
+            ltcode,
             "), (tstep ",
-            str(tstep),
+            tstep,
             ",",
-            str(ltstep),
+            ltstep,
             "), (nval ",
-            str(nval) + ",",
-            str(lnval),
+            f"{nval},",
+            lnval,
             ")",
         )
 

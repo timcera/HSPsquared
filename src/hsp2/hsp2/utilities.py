@@ -422,7 +422,7 @@ def versions(import_list=[]):
 
 
 def get_timeseries(timeseries_inputs: SupportsReadTS, ext_sourcesdd, siminfo):
-    """makes timeseries for the current timestep and trucated to the sim interval"""
+    """makes timeseries for the current timestep and truncated to the sim interval"""
     # explicit creation of Numba dictionary with signatures
     ts = Dict.empty(key_type=types.unicode_type, value_type=types.float64[:])
     for row in ext_sourcesdd:

@@ -1,6 +1,7 @@
-"""The `hsp2io` module contains an abstracted approach to getting data in and
-out of HSP2 for flexibility and performance and also to support future
-automation and model coupling.
+"""
+The `hsp2io` module contains an abstracted approach to getting data in and out
+of HSP2 for flexibility and performance and also to support future automation
+and model coupling.
 """
 
-from .. import __version__
+from .. import __version__ as __version__

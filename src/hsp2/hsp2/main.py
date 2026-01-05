@@ -3,13 +3,14 @@ Author: Robert Heaphy, Ph.D.
 License: LGPL2
 """
 
+import os
+from datetime import datetime as dt
+from typing import Union
+
 from numpy import float64
 from pandas import DataFrame, date_range
 from pandas.tseries.offsets import Minute
-from datetime import datetime as dt
-from typing import Union
-import os
-from hsp2.hsp2io.hdf import HDF5
+from hsp2.hsp2io.io import IOManager
 from hsp2.hsp2.utilities import (
     versions,
     get_timeseries,
@@ -33,32 +34,27 @@ from hsp2.hsp2.om import (
 )
 from hsp2.hsp2.SPECL import specl_load_state
 
-from hsp2.hsp2io.io import IOManager, SupportsReadTS, Category
+from hsp2.hsp2io.protocols import SupportsReadTS, Category
 
 
 def main(
-    io_manager: Union[str, IOManager], saveall: bool = False, jupyterlab: bool = True
+    io_manager, saveall: bool = False, jupyterlab: bool = True
 ) -> None:
     """
     Run main HSP2 program.
+
     Parameters
     ----------
     io_manager
-        An instance of IOManager class.
+        An instance of IOManager class or a string path to an HDF5 file.
     saveall: bool, default=False
         Saves all calculated data ignoring SAVE tables.
     jupyterlab: bool, default=True
-        Flag for specific output behavior for  jupyter lab.
-
-    Return
-    ------------
-    None
-
+        Flag for specific output behavior for jupyter lab.
     """
     if isinstance(io_manager, str):
-        hdf5_instance = HDF5(io_manager)
-        io_manager = IOManager(hdf5_instance)
-    hdfname = io_manager._input.file_path
+        io_manager = IOManager(io_manager)
+    hdfname = io_manager.file_path
     if not os.path.exists(hdfname):
         raise FileNotFoundError(f"{hdfname} HDF5 File Not Found")
 

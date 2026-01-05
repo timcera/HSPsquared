@@ -5,7 +5,7 @@ from pandas import DataFrame
 
 class Model:
     def __init__(self) -> None:
-        self.model = defaultdict(dict)
+        self.parameters = defaultdict(dict)
         self.ddlinks = defaultdict(list)
         self.ddmasslinks = defaultdict(list)
         self.ddext_sources = defaultdict(list)

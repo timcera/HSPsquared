@@ -110,7 +110,7 @@ def main(hdfname, doe, doename="DOE_RESULTS", saveall=False):
         msg(1, f"Processing started for file {hdfname}; saveall={saveall}")
 
         # read user control, parameters, states, and flags  from HDF5 file
-        opseq, ddlinks, ddmasslinks, ddext_sources, originaluci, siminfo = (
+        opseq, ddlinks, ddmasslinks, ddext_sources, original_parameters, siminfo = (
             get_parameters(store)
         )
         start, stop = siminfo["start"], siminfo["stop"]
@@ -124,7 +124,7 @@ def main(hdfname, doe, doename="DOE_RESULTS", saveall=False):
             savepath = f"{doename}/RUN{run}"
             msg(2, f"Starting Run {run}; saving as {savepath}")
 
-            parameters = deepcopy(originaluci)
+            parameters = deepcopy(original_parameters)
             for _, operation, segment, delt in opseq.itertuples():
                 msg(3, f"{operation} {segment} DELT(minutes): {delt}")
                 siminfo["delt"] = delt
@@ -153,7 +153,7 @@ def main(hdfname, doe, doename="DOE_RESULTS", saveall=False):
                         )
                     ui = parameters[operation, activity, segment]  # ui is a dictionary
 
-                    # update deep copy of UCI dict with run dict
+                    # update deep copy of parameter dict with run dict
                     ruci = rundict[run]
                     if (operation, activity, segment) in ruci:
                         for table in ruci[operation, activity, segment]:

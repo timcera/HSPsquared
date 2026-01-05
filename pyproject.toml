@@ -69,7 +69,7 @@ readme = {file = "README.rst"}
 version = {file = "VERSION"}
 
 [tool.setuptools.package-data]
-"hsp2.hsp2tools.data" = ["*"]
+"hsp2.data" = ["*"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

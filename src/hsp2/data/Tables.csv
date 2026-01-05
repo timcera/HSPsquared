@@ -1,0 +1,1169 @@
+HSPF_BLOCK,HSPF_TABLE,HDF_TABLE,IF_HAVE_THEN_REQUIRE,DEFAULTABLE_TABLE,HSPF_MAX_NO_TABLES,HEADER,HELP
+BMPRAC,ACID-FLAG,/BMPRAC/ACID/FLAGS,BMPRAC GEN-INFO,,,"*** BMPRAC  Num       Monthly variable flags
+*** x -  x Chem ACI1 ACI2 ACI3 ACI4 ACI5 ACI6 ACI7",*** Acid mine drainage components flags.
+BMPRAC,ACID-FRAC,/BMPRAC/ACID/PARAMETERS,BMPRAC GEN-INFO,,,"    BMPRAC***                        Removal fractions
+*** x -  x      ACI1      ACI2      ACI3      ACI4      ACI5      ACI6      ACI7",*** Removal fractions for acid mine drainage chemicals
+BMPRAC,ADSNUT-FRAC,/BMPRAC/ADSNUT/PARAMETERS,BMPRAC GEN-INFO,TRUE,,"***                             Removal fractions
+*** BMPRAC              Ammonia                     Phosphate
+*** x -  x      Sand      Silt      Clay      Sand      Silt      Clay",*** Removal fractions for adsorbed nutrients.
+BMPRAC,BINARY-INFO,/BMPRAC/GENERAL/BINOUT,BMPRAC GEN-INFO,,,"*** BMPRAC  Binary Output level flags
+*** x -  x FLOW CONS HEAT  SED   GQ  OXY  NUT PLNK   PH PIVL  PYR","*** Table of binary output level flags for BMPRAC. HSPF permits the user
+*** to vary the output level (maximum frequency) for the various active
+*** sections of an operation. 2 means every PIVL intervals, 3 means
+*** every day, 4 means every month, 5 means every year, 6 means never."
+BMPRAC,CONS-FLAG,/BMPRAC/CONS/FLAGS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC            Monthly variable flags
+*** x -  x  C1F  C2F  C3F  C4F  C5F  C6F  C7F  C8F  C9F C10F",*** Conservative constituent flags.
+BMPRAC,CONS-FRAC,/BMPRAC/CONS/PARAMETERS,BMPRAC GEN-INFO,,,"*** BMPRAC        Name           Units  Removal fraction
+*** x -  x<-------CONID------>  <CQTYID>    CONFRC",*** Name and removal fraction for one conservative substance.
+BMPRAC,DNUT-FRAC,/BMPRAC/DNUT/PARAMETERS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC               Removal fractions
+*** x -  x       NO3       TAM       NO2       PO4",*** Removal fractions for dissolved nutrients.
+BMPRAC,FLOW-FLAG,/BMPRAC/FLOW/FLAGS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC Monthly variable flag
+*** x -  x VOLF",*** Flow flags.
+BMPRAC,FLOW-FRAC,/BMPRAC/FLOW/FLAGS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC Removal fraction
+*** x -  x    VOLFRC",*** Removal fraction for flow.
+BMPRAC,GEN-INFO,/BMPRAC/GENERAL/INFO,,,,"***              Name           BMP             Unit Systems   Printer
+*** BMPRAC                     Type NCON  NGQ      t-series  Engl Metr
+*** x -  x<------------------>                      in  out",*** General information for BMPRAC.
+BMPRAC,GQ-FLAG,/BMPRAC/GQ/FLAGS,BMPRAC GEN-INFO,TRUE,,"***                   Monthly variable flags
+*** BMPRAC<------Qual 1------><------Qual 2------><------Qual 3------>
+*** x -  x Soln Sand Silt Clay Soln Sand Silt Clay Soln Sand Silt Clay",*** General constituent (qual) flags.
+BMPRAC,GQ-FRAC,/BMPRAC/GQ/PARAMETERS,BMPRAC GEN-INFO,,,"    BMPRAC***     Name           Units            Removal fractions
+*** x -  x<-------GQID------->  <GQTYID>      Soln      Sand      Silt      Clay",*** Name and removal fraction for one generalized quality constituent.
+BMPRAC,HEAT-FLAG,/BMPRAC/HEAT/FLAGS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC Monthly variable flag
+*** x -  x  HTF",*** Heat flags.
+BMPRAC,HEAT-FRAC,/BMPRAC/HEAT/PARAMETERS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC Removal fraction
+*** x -  x     HTFRC",*** Removal fraction for heat.
+BMPRAC,NUT-FLAG,/BMPRAC/NUT/FLAGS,BMPRAC GEN-INFO,TRUE,,"***                  Monthly variable flags
+*** BMPRAC<-----Solution-----><---Ads-NH4---><---Ads-PO4--->
+*** x -  x  NO3  TAM  NO2  PO4 Sand Silt Clay Sand Silt Clay",*** Nutrient flags.
+BMPRAC,OXY-FLAG,/BMPRAC/OXY/FLAGS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC  Monthly variable flags
+*** x -  x DOXF BODF",*** Oxygen components flags.
+BMPRAC,OXY-FRAC,/BMPRAC/OXY/PARAMETERS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC   Removal fractions
+*** x -  x       DOX       BOD",*** Removal fractions for oxygen components.
+BMPRAC,PH-FLAG,/BMPRAC/PH/FLAGS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC  Monthly variable flags
+*** x -  x  TIC  CO2",*** Inorganic carbon components flags.
+BMPRAC,PH-FRAC,/BMPRAC/PH/PARAMETERS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC    Removal fractions
+*** x -  x       TIC       CO2",*** Removal fractions for inorganic carbon components.
+BMPRAC,PLANK-FLAG,/BMPRAC/PLANK/FLAGS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC  Monthly variable flags
+*** x -  x Phyt  Zoo  ORN  ORP  ORC",*** Plankton components flags.
+BMPRAC,PLANK-FRAC,/BMPRAC/PLANK/PARAMETERS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC                  Removal Fractions
+*** x -  x      Phyt       Zoo       ORN       ORP       ORC",*** Removal fractions for plankton components.
+BMPRAC,PRINT-INFO,/BMPRAC/GENERAL/PRINT,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC  Printout level flags
+*** x -  x FLOW CONS HEAT  SED   GQ  OXY  NUT PLNK   PH PIVL  PYR","*** Table of printout level flags for BMPRAC. HSPF permits the user to
+*** vary the printout level (maximum frequency) for the various active
+*** sections of an operation. 2 means every PIVL intervals, 3 means
+*** every day, 4 means every month, 5 means every year, 6 means never."
+BMPRAC,SED-FLAG,/BMPRAC/SED/FLAGS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC Monthly variable flags
+*** x -  x Sand Silt Clay",*** Sediment flags.
+BMPRAC,SED-FRAC,/BMPRAC/SED/PARAMETERS,BMPRAC GEN-INFO,TRUE,,"*** BMPRAC         Removal fractions
+*** x -  x      sand      silt      clay",*** Removal fractions for sediment.
+CATEGORY,,/CATEGORY,,,,Ac <no> <category name-> ***,"*** The CATEGORIES block associates a category name with a number for use
+*** in keeping track of categories in a simulation."
+COPY,TIMESERIES,/COPY/COPY/PARAMETERS,,,,"  Copy-opn ***
+*** x -  x  NPT  NMN",*** Number of time series to be copied using COPY Operation.
+DISPLY,DISPLY-INFO1,/DISPLY/DISPLY/INFO,,,,"    DISPLY<----------Title-------->***        <-short-span->
+*** x -  x                                    <---disply--->  <annual summary ->
+*** x -  x                               TRAN PIVL DIG1 FIL1  PYR DIG2 FIL2 YRND","*** This table contains most of the information necessary to generate data
+*** displays."
+DISPLY,DISPLY-INFO2,/DISPLY/DISPLY/INFO,DISPLY DISPLY-INFO1,TRUE,,"*** DISPLY Convert DegC to F    Display negative data
+*** x -  x      Mult       Add    THRSH1    THRSH2","*** Additional optional information for module DISPLY. This table is
+*** usually not supplied."
+DURANL,DURATIONS,/DURANL/DURANL/PARAMETERS,DURANL GEN-DURDATA,TRUE,,"*** DURANL   <---Durations-------->
+*** x -  x    1    2    3    4    5",*** Table of durations to be used in the duration analysis.
+DURANL,GEN-DURDATA,/DURANL/DURANL/PARAMETERS,,,,"    DURANL<-----------------title----------------> NDUR NLEV PRFG***P- LCNU LCOU
+*** x -  x                                                        UNIT",*** General information for durational analysis.
+DURANL,LCONC,/DURANL/DURANL/PARAMETERS,DURANL GEN-DURDATA,TRUE,,"    DURANL ***
+*** x -  x       LC1       LC2       LC3       LC4       LC5       LC6       LC7
+*** x -  x       LC8       LC9      LC10","*** Lethal concentrations to be used in the duration analysis. Repeats for
+*** each lethal concentration curve-LCNUM times. If no lethal analysis is
+*** being done, this table may be omitted."
+DURANL,LEVELS,/DURANL/DURANL/PARAMETERS,DURANL GEN-DURDATA,TRUE,,"    DURANL ***
+*** x -  x    2    3    4    5    6    7    8    9   10   11   12   13   14   15
+*** x -  x   16   17   18   19   20   21",*** Levels to be used in the duration analysis.
+DURANL,SEASON,/DURANL/DURANL/PARAMETERS,DURANL GEN-DURDATA,TRUE,,"*** DURANL         Start               End
+*** x -  x         mo da hr mn         mo da hr mn",*** Information for seasonal duration analysis.
+EXT SOURCES,,/CONTROL/EXT_SOURCES,,,,"***<-Volume-> <Member> SsysSgap<--Mult-->Tran <-Target vols> <-Grp> <-Member->
+Ac <Name>***x <Name> x tem strg<-factor->strg <Name>   x   x        <Name> x x","*** In the EXTERNAL SOURCES block the user specifies those time series
+*** which are to be supplied to operations in a RUN from sources external
+*** to it."
+EXT TARGETS,,/CONTROL/EXT_TARGETS,,,,"***<-Volume-> <-Grp> <-Member-><--Mult-->Tran <-Volume-> <Member> Tsys Agg Amd
+Ac <Name>***x        <Name> x x<-factor->strg <Name>   x <Name>qf  tem stg stg","*** In the EXTERNAL TARGETS block the user specifies those time series
+*** which will be output from the operations in a RUN."
+FILES,,/FILES/FILES/FILES,,,,Ac <type>  <fun>***<------------fname---------------------------------------->,"*** The FILES block contains the names of input and output files used by
+*** the program during the run."
+FTABLES,FTABLE,/FTABLES/FT,,,,,
+GENER,COEFFS,/GENER/OPCODE,GENER OPCODE,TRUE,,"    GENER***      K1        K2        K3        K4        K5        K6        K7
+*** x -  x",*** Coefficients in generating power function.
+GENER,NTERMS,/GENER/OPCODE,GENER OPCODE,TRUE,,"*** GENER NTERMS
+*** x -  x",*** Number of terms in power series.
+GENER,OPCODE,/GENER/OPCODE,,,,"*** GENER   OP-
+*** x -  x CODE  NTS",*** Operation code and number of members for time series generation.
+GENER,PARM,/GENER/GENER/INFO,GENER OPCODE,TRUE,,"*** GENER          K
+*** x -  x",*** Constant for GENER operation.
+GLOBAL,,/CONTROL/GLOBAL,,,,,
+IMPLND,ACTIVITY,/IMPLND/GENERAL/ACTIVITY,,,,"*** <ILS >               Active Sections
+*** x -  x ATMP SNOW IWAT  SLD  IWG IQAL",*** Active sections of IMPLND.
+IMPLND,ATEMP-DAT,/IMPLND/ATEMP/PARAMETERS,IMPLND ACTIVITY ATEMP,,,"*** <ILS >     ELDAT    AIRTEMP
+*** x -  x      (m)    (deg C)",*** Data for section ATEMP.
+IMPLND,BINARY-INFO,/IMPLND/GENERAL/BINOUT,,,,"*** <ILS > **** Binary-Output-flags **** PIVL  PYR
+*** x -  x ATMP SNOW IWAT  SLD  IWG IQAL *********","*** Binary Output information of IMPLND. HSPF permits the user to vary
+*** the output level (maximum frequency) for the various active sections
+*** of an operation. 2 means every PIVL intervals, 3 means every day,
+*** 4 means every month, 5 means every year, 6 means never."
+IMPLND,GEN-INFO,/IMPLND/GENERAL/INFO,,,,"***             Name             Unit-systems   Printer BinaryOut
+*** <ILS >                           t-series Engl Metr Engl Metr
+*** x -  x                            in  out",*** General information for IMPLND.
+IMPLND,ICE-FLAG,/IMPLND/SNOW/FLAGS,IMPLND SNOW-PARM1,TRUE,,"*** <ILS > Ice-
+*** x -  x flag",*** Flag to simulate ice formation.
+IMPLND,IQL-AD-FLAGS,/IMPLND/IQUAL/FLAGS,,,,"***                        Atmospheric Deposition Flags
+*** <ILS >  QUAL1  QUAL2  QUAL3  QUAL4  QUAL5  QUAL6  QUAL7  QUAL8  QUAL9 QUAL10
+*** x -  x <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C>",*** Quality constituent atmospheric deposition flags.
+IMPLND,IWAT-PARM1,/IMPLND/IWATER/PARAMETERS,,,,"*** <ILS >        Flags
+*** x -  x CSNO RTOP  VRS  VNN RTLI",*** First group of IWATER parameters (flags).
+IMPLND,IWAT-PARM2,/IMPLND/IWATER/PARAMETERS,,,,"*** <ILS >      LSUR     SLSUR      NSUR     RETSC
+*** x -  x       (m)                          (mm)",*** Second group of IWATER parameters.
+IMPLND,IWAT-PARM3,/IMPLND/IWATER/PARAMETERS,IMPLND IWAT-PARM2,TRUE,,"*** <ILS >    PETMAX    PETMIN
+*** x -  x   (deg C)   (deg C)",*** Third group of IWATER parameters.
+IMPLND,IWAT-STATE1,/IMPLND/IWATER/STATES,IMPLND IWAT-PARM2,,,"*** <ILS >  IWATER state variables (mm)
+*** x -  x      RETS      SURS",*** This table is used to specify the inital water storages.
+IMPLND,IWT-INIT,/IMPLND/IWTGAS/STATES,,,,"*** <ILS >     SOTMP     SODOX     SOCO2
+*** x -  x   (deg C)    (mg/l)  (mg C/l)","*** Initial conditions for section IWTGAS.  The values given in this table
+*** do not affect anything in the simulation beyond the start of the first
+*** interval of the run.  Therefore, in most runs, this table should be
+*** omitted."
+IMPLND,IWT-PARM1,/IMPLND/IWTGAS/PARAMETERS,IMPLND IWAT-PARM2,,,"*** <ILS >  Flags for section IWTGAS
+*** x -  x WTFV CSNO",*** Flags for section IWTGAS (IMPLND).
+IMPLND,IWT-PARM2,/IMPLND/IWTGAS/PARAMETERS,,,,"***         Second group of IWTGAS parms
+*** <ILS >      ELEV      AWTF      BWTF
+*** x -  x       (m)   (deg C) (deg C/C)",*** Second group of IWTGAS parameters (IMPLND).
+IMPLND,LAT-FACTOR,/IMPLND/IQUAL/PARAMETERS,IMPLND IWAT-PARM2,,,"*** <ILS >  Sediment   Surface
+*** x -  x    SDLFAC    SLIFAC",*** Lateral inflow weighting factors for IWGTAS and IQUAL
+IMPLND,MON-ACCUM,/IMPLND/IQUAL/MONTHLY/ACCUM,,,,"*** <ILS >  Value at start of each month for accum rate of QUALOF (qty/ha.day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of accumulation rate of QUALOF at start of each month.
+*** This table is only required if VQOFG in Table-type QUAL-PROPS is 1.
+*** and is repeated for each quality constituent."
+IMPLND,MON-AWTF,/IMPLND/IWTGAS/MONTHLY/AWTF,,,,"*** <ILS >  Value of AWTF at start of each month (deg C)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of AWTF (intercept of surface water temperature
+*** regression equation) at start of each month. This table is only
+*** required if WTFVFG in Table-type IWT-PARM1 is 1."
+IMPLND,MON-BWTF,/IMPLND/IWTGAS/MONTHLY/BWTF,,,,"*** <ILS >  Value of BWTF at start of each month (deg C/C)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of BWTF (slope of surface water temperature regression
+*** equation) at start of each month. This table is only required if
+*** WTFVFG in Table-type IWT-PARM1 is 1."
+IMPLND,MON-MANNING,/IMPLND/IWATER/MONTHLY/NSUR,,,,"*** <ILS >  Manning's n at start of each month
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Values of Manning's n for the overland flow plane at start of ea
+*** month.  This table is only required if VNNFG in Table-type IWAT-PARM1
+*** is 1."
+IMPLND,MON-MELT-FAC,/IMPLND/SNOW/MONTHLY/MELT-FAC,IMPLND SNOW-PARM1,,,"*** <ILS >  Degree-day snowmelt factor at start of each month (mm/d.C)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of degree-day snowmelt factor at start of each month.
+*** This table is only required if VKMFG in Table-type SNOW-FLAGS is 1."
+IMPLND,MON-POTFW,/IMPLND/IQUAL/MONTHLY/POTFW,,,,"*** <ILS >  Value at start of each month for washoff potency factor (qty/tonn)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of washoff potency factor at start of each month. This
+*** table is only required if VPFWFG in Table-type QUAL-PROPS is 1. and is
+*** repeated for each quality constituent."
+IMPLND,MON-REMOV,/IMPLND/SOLIDS/MONTHLY/REMOV,IMPLND SLD-PARM2,,,"*** <ILS >  Monthly solids unit removal rate (/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of solids unit removal rate. This table is only
+*** required if VRSDFG in Table-type SLD-PARM1 is 1."
+IMPLND,MON-RETN,/IMPLND/IWATER/MONTHLY/RETN,,,,"*** <ILS >  Retention storage capacity at start of each month (mm)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly Values of retention storage capacity at start of each mo This
+*** table is only required if VRSFG in Table-type IWAT-PARM1 is"
+IMPLND,MON-SACCUM,/IMPLND/SOLIDS/MONTHLY/SACCUM,IMPLND SLD-PARM2,,,"*** <ILS >  Monthly values for solids accumulation (tonnes/ha.day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values for solids accumulation rate. This table is only
+*** required if VASDFG in Table-type SLD-PARM1 is 1."
+IMPLND,MON-SQOLIM,/IMPLND/IQUAL/MONTHLY/SQOLIM,,,,"*** <ILS >  Value at start of month for limiting storage of QUALOF (qty/ha)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values limiting storage of QUALOF at start of each month. This
+*** table is only required if VQOFG in Table-type QUAL-PROPS is 1. and is
+*** repeated for each quality constituent."
+IMPLND,NQUALS,/IMPLND/IQUAL/PARAMETERS,,,,"*** <ILS >
+*** x -  xNQUAL","*** The total number of quality constituents simulated in Section IQUAL is
+*** indicated in this table."
+IMPLND,PRINT-INFO,/IMPLND/GENERAL/PRINT,,,,"*** <ILS > ******** Print-flags ******** PIVL  PYR
+*** x -  x ATMP SNOW IWAT  SLD  IWG IQAL *********","*** Printout information of IMPLND. HSPF permits the user to vary the
+*** printout level (maximum frequency) for the various active sections of
+*** an operation. 2 means every PIVL intervals, 3 means every day, 4
+*** means every month, 5 means every year, 6 means never."
+IMPLND,QUAL-INPUT,/IMPLND/IQUAL/IQUAL1/PARAMETERS,,,,"***         Storage on surface and nonseasonal parameters
+***            SQO    POTFW   ACQOP  SQOLIM   WSQOP
+*** <ILS >  qty/ha qty/tonn    qty/  qty/ha   mm/hr
+*** x -  x                  ha.day","*** Storage on surface and nonseasonal parameters for IQUAL (IMPLND) This
+*** table is repeated for each quality constituent."
+IMPLND,QUAL-PROPS,/IMPLND/IQUAL/IQUAL1/FLAGS,,,,"*** <ILS >    Identifiers and Flags
+*** x -  x      QUALID    QTID  QSD VPFW  QSO  VQO","*** Identifiers and flags for a quality constituent in IQUAL. This table
+*** is repeated for each quality constituent."
+IMPLND,SLD-PARM1,/IMPLND/SOLIDS/PARAMETERS,IMPLND SLD-PARM2,,,"*** <ILS >     Flags
+*** x -  x VASD VRSD SDOP",*** First group of SOLIDS parameters (IMPLND).
+IMPLND,SLD-PARM2,/IMPLND/SOLIDS/PARAMETERS,,,,"***             KEIM      JEIM    ACCSDP    REMSDP
+*** <ILS >                         tne/      /day
+*** x -  x                        ha.day",*** Second group of SOLIDS parameters (IMPLND).
+IMPLND,SLD-STOR,/IMPLND/SOLIDS/PARAMETERS,IMPLND SLD-PARM2,,,"*** <ILS >  Solids storage (tonne/ha)
+*** x -  x",*** Initial storage of solids (IMPLND).
+IMPLND,SNOW-FLAGS,/IMPLND/SNOW/FLAGS,IMPLND SNOW-PARM1,,,"*** <ILS >
+*** x -  x SNOP  VKM ",*** Snow flags.
+IMPLND,SNOW-INIT1,/IMPLND/SNOW/STATES,IMPLND SNOW-PARM1,,,"*** <ILS > Pack-snow  Pack-ice Pack-watr    RDENPF      DULL    PAKTMP
+*** x -  x      (mm)      (mm)      (mm)                       (deg C)",*** First group of initial values for SNOW simulation.
+IMPLND,SNOW-INIT2,/IMPLND/SNOW/STATES,IMPLND SNOW-PARM1,,,"*** <ILS >    COVINX    XLNMLT    SKYCLR
+*** x -  x      (mm)      (mm)",*** Second group of initial values for SNOW simulation.
+IMPLND,SNOW-PARM1,/IMPLND/SNOW/PARAMETERS,IMPLND ACTIVITY SNOW,,,"*** <ILS >       LAT     MELEV     SHADE    SNOWCF    COVIND     KMELT     TBASE
+*** x -  x   degrees       (m)                          (mm)  (mm/d.C)       (C)",*** First group of SNOW parameters.
+IMPLND,SNOW-PARM2,/IMPLND/SNOW/PARAMETERS,IMPLND SNOW-PARM1,,,"*** <ILS >     RDCSN     TSNOW    SNOEVP    CCFACT    MWATER    MGMELT
+*** x -  x             (deg C)                                (mm/day)",*** Second group of SNOW parameters.
+MASS-LINK,MASS-LINK,/CONTROL/MASS_LINKS,,,,"***<-Volume-> <-Grp> <-Member-><--Mult--> Tran<-Target vols> <-Grp> <-Member->
+Ac <Name>***         <Name> x x<-factor-> strg<Name>                <Name> x x","*** In the MASS-LINK block the user specifies those time series
+*** connections which will be combined with the linkages in the SCHEMATIC
+*** block to generate a set of time series connections in the NETWORK
+*** block."
+MONTH-DATA,MONTH-DATA,/MONTH-DATA/MONTH-DATA,,,,Ac***<text------>   <i> <????>,*** The MONTH-DATA block.
+MUTSIN,MUTSINFO,/MUTSIN/MUTSIN/INFO,,,,"*** MUTSIN  MFL  NPT  NMN  NLI MSFG
+*** x -  x",*** Information about time series to be copied.
+NETWORK,,/CONTROL/LINKS,,,,"***<-Volume-> <-Grp> <-Member-><--Mult-->Tran <-Target vols> <-Grp> <-Member->
+Ac <Name>***x        <Name> x x<-factor->strg <Name>   x   x        <Name> x x","*** In the NETWORK block the user specifies those time series which will
+*** be passed between operations via the internal scratch pad."
+OPN SEQUENCE,,/CONTROL/OP_SEQUENCE,,,,,
+PERLND,ACTIVITY,/PERLND/GENERAL/ACTIVITY,,,,"*** <PLS >               Active Sections                               ***
+*** x -  x ATMP SNOW PWAT  SED  PST  PWG PQAL MSTL PEST NITR PHOS TRAC ***",*** Active sections of PERLND.
+PERLND,ATEMP-DAT,/PERLND/ATEMP/PARAMETERS,PERLND ACTIVITY ATEMP,,,"*** <PLS >     ELDAT    AIRTEMP
+*** x -  x       (m)    (deg C)",*** Data for section ATEMP.
+PERLND,BINARY-INFO,/PERLND/GENERAL/BINOUT,,,,"*** <PLS >               Binary Output Flags                           PIVL  PYR
+*** x -  x ATMP SNOW PWAT  SED  PST  PWG PQAL MSTL PEST NITR PHOS TRAC","*** HSPF permits the user to vary the output level (maximum frequency)
+*** for the various active sections of an operation: 2 means every PIVL
+*** intervals, 3 means every day, 4 means every month, 5 means every
+*** year, 6 means never."
+PERLND,CROP-DATES,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM1 IRRGFG,TRUE,,"***                Crop planting and harvesting dates
+*** <PLS >         PLANT1   HARV1    PLANT2   HARV2    PLANT3   HARV3
+*** x -  x NCRP      M  D    M  D      M  D    M  D      M  D    M  D","*** These crop dates are used to determine daily plant uptake targets from
+*** monthly fractions when the yield-based algorithm is being used
+*** (NUPTFG=1 in Table-type NIT-FLAGS and/or PUPTFG=1 in Table-type PHOS-
+*** PLAGS).  They are also used to specify crop irrigation seasons if
+*** IRRGFG=2 in Table-type PWAT-PARM1."
+PERLND,CROP-SEASPM,/PERLND/PWATER/CROP_STAGES,PERLND PWAT-PARM1 IRRGFG,TRUE,,"*** <PLS >    CRAWD1    CRAWD2    CRAWD3    CRAWD4    CRRDPI    CRRDPF
+*** x -  x                                              (cm)      (cm)","*** Each crop season specified in Table-type CROP-DATES is divided into
+*** four stages for the purpose of determining irrigation demand when
+*** IRRGFG=2 in Table-type PWAT-PARM2, and VAWDFG=2 and/or VCRDFG=2 in
+*** Table-type IRRIG-PARM1.  These values are specified for the two
+*** parameters AWD and CRDEP as they change during the crop season."
+PERLND,CROP-STAGES,/PERLND/PWATER/CROP_STAGES,PERLND PWAT-PARM1 IRRGFG,TRUE,,"*** <PLS > Fractions of crop season for each stage
+*** x -  x    CRPST1    CRPST2    CRPST3    CRPST4","*** Each crop season specified in Table-type CROP-DATES is divided into
+*** four stages for the purpose of determining irrigation demand when
+*** IRRGFG=2 in Table-type PWAT-PARM2, and VAWDFG=2 and/or VCRDFG=2 in
+*** Table-type IRRIG-PARM1.  These fractions, rounded to the nearest day,
+*** specify the duration of each stage."
+PERLND,GEN-INFO,/PERLND/GENERAL/INFO,,,,"***             Name                  Unit-systems   Printer BinaryOut
+*** <PLS >                                t-series Engl Metr Engl Metr
+*** x -  x                                 in  out",*** General information for pervious land segment.
+PERLND,ICE-FLAG,/PERLND/PWATER/PARAMETERS,PERLND SNOW-PARM1,TRUE,,"*** <PLS > Ice-
+*** x -  x flag",*** Flag to simulate ice formation.
+PERLND,IRRIG-PARM1,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM1 IRRGFG,TRUE,,"*** <PLS >  Counters and Flags
+*** x -  x NSKD SZON VCRD VAWD IROP",*** First group of PWATER Irrigation Parameters (flags).
+PERLND,IRRIG-PARM2,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM1 IRRGFG,TRUE,,"*** <PLS >  IRAREA   IREFF    ARZI   WILTP  FLDCAP   CRDEP   IRAWD  CAPRIS
+*** x -  x    (ha)                 (cm/cm) (cm/cm)    (cm)            (cm)",*** Second group of PWATER Irrigation Parameters.
+PERLND,IRRIG-SCHED,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM1 IRRGFG,TRUE,,"***       <---------Application---------->     <---------Application---------->
+*** <PLS ><-----date------> IRDU    IRRATE     <-----date------> IRDU    IRRATE
+*** x -  x yyyy mm dd hh mm  min     mm/hr      yyyy mm dd hh mm   hr     mm/hr",*** Schedule of applications when IRRGFG=3 in Table-type PWAT-PARM1.
+PERLND,IRRIG-SOURCE,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM1 IRRGFG,TRUE,,"*** <PLS ><-----External-----><---Groundwater----><-----------RCHRES----------->
+*** x -  x    XPRIOR     XFRAC    GPRIOR     GFRAC    RPRIOR     RFRAC    IRCHNO",*** Irrigation source priorities and fractions.
+PERLND,IRRIG-TARGET,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM1 IRRGFG,TRUE,,"*** <PLS >      Irrigation Application Target Fractions
+*** x -  x  Intercep   Surface     Upper     Lower Active GW",*** Irrigation target fractions.
+PERLND,LAT-FACTOR,/PERLND/PWTGAS/PARAMETERS,PERLND ACTIVITY PWTGAS,TRUE,,"*** <PLS >  Sediment   Surface Interflow Active GW
+*** x -  x    SDLFAC    SLIFAC    ILIFAC    ALIFAC",*** Lateral inflow weighting factors for PWGTAS and PQUAL
+PERLND,MON-ACCUM,/PERLND/PQUAL/MONTHLY/ACCUM,PERLND QUAL-INPUT,TRUE,,"*** <PLS >  Value at start of each month for accum rate of QUALOF (qty/ha.day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of accumulation rate of QUALOF at start of each month.
+*** This table is only required if VQOFG in Table-type QUAL-PROPS is 1.
+*** This table should be repeated for each quality constituent."
+PERLND,MON-ASLT,/PERLND/PSTEMP/MONTHLY/ASLT,PERLND PSTEMP-PARM2,TRUE,,"*** <PLS >  Value of ASLT at start of each month (deg C)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of surface layer temperature at start of each month.
+*** This table is only required if SLTVFG in Table-type PSTEMP-PARM1 is 1."
+PERLND,MON-BSLT,/PERLND/PSTEMP/MONTHLY/BSLT,PERLND PSTEMP-PARM2,TRUE,,"*** <PLS >  Value of BSLT at start of each month (deg C/C)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of the slope of the surface layer temperature
+*** regression equation at the start of each month. This table is only
+*** required if SLTVFG in Table-type PSTEMP-PARM1 is 1."
+PERLND,MON-COVER,/PERLND/SEDMNT/MONTHLY/COVER,PERLND SED-PARM2,TRUE,,"*** <PLS >  Monthly values for erosion related cover
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly erosion related cover values. This table is only required if
+*** CRVFG in Table-type SED-PARM1 is 1. If required, this table must be
+*** repeated for each canopy layer if NCANPY > 1 in table PWAT-PARM1."
+PERLND,MON-GRND-CONC,/PERLND/PQUAL/MONTHLY/GRND-CONC,PERLND QUAL-INPUT,TRUE,,"*** <PLS >  Value at start of month for conc of QUAL in groundwater (qty/l)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of conc of QUAL in groundwater at start of each month.
+*** This table is only required if VAQCFG in Table-type QUAL-PROPS is 1.
+*** This table should be repeated for each quality constituent."
+PERLND,MON-GRNDCO2,/PERLND/PWTGAS/MONTHLY/GRNDCO2,PERLND ACTIVITY PWTGAS,TRUE,,"*** <PLS >Value at start of each month for groundwater CO2 conc. (mg C/l)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of groundwater CO2 concentration at start of each This
+*** table is only required if GCVFG in Table-type PWT-PARM1 is 1."
+PERLND,MON-GRNDDOX,/PERLND/PWTGAS/MONTHLY/GRNDDOX,PERLND ACTIVITY PWTGAS,TRUE,,"*** <PLS >Value at start of each month for groundwater DO concentration (mg/l)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of groundwater DO concentration at start of each month.
+*** This table is only required if GDVFG in Table-type PWT-PARM1 is 1."
+PERLND,MON-IFLW-CONC,/PERLND/PQUAL/MONTHLY/IFLW-CONC,PERLND QUAL-INPUT,TRUE,,"*** <PLS >  Conc of QUAL in interflow outflow for each month (qty/l)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of conc of QUAL in interflow outflow at start of month.
+*** This table is only required if VIQCFG in Table-type QUAL-PROPS is 1.
+*** This table should be repeated for each quality constituent."
+PERLND,MON-IFWCO2,/PERLND/PWTGAS/MONTHLY/IFWCO2,PERLND ACTIVITY PWTGAS,TRUE,,"*** <PLS > Value at start of each month for interflow CO2 conc. (mg C/l)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of interflow CO2 concentration at start of each month.
+*** This table is only required if ICVFG in Table-type PWT-PARM1 is 1."
+PERLND,MON-IFWDOX,/PERLND/PWTGAS/MONTHLY/IFWDOX,PERLND ACTIVITY PWTGAS,TRUE,,"*** <PLS > Value at start of each month for interflow DO concentration (mg/l)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of interflow DO concentration at start of each month.
+*** This table is only required if IDVFG in Table-type PWT-PARM1 is 1."
+PERLND,MON-INTERCEP,/PERLND/PWATER/MONTHLY/CEPSC,PERLND PWAT-PARM1 VCSFG,,,"*** <PLS >  Interception storage capacity at start of each month (mm)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of interception storage capacity at start of each
+*** month. This table is only required if VCSFG is 1 in Table-type PWAT-
+*** PARM1. If required, this table must be repeated for each canopy layer
+*** if NCANPY > 1 in table PWAT-PARM1."
+PERLND,MON-INTERFLW,/PERLND/PWATER/MONTHLY/INTERFLW,PERLND PWAT-PARM1 VIFWFG,,,"*** <PLS >  Interflow inflow parameter for start of each month
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of interflow inflow parameter at start of each month.
+*** This table is only required if VIFWFG in Table-type PWAT-PARM1 is 1."
+PERLND,MON-IRC,/PERLND/PWATER/MONTHLY/IRC,PERLND PWAT-PARM1 VIRCFG,,,"*** <PLS >  Interflow recession constant at start of each month (/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of interflow recession constant at start of each This
+*** table is only required if VIRCFG in Table-type PWAT-PARM1 i"
+PERLND,MON-IRR-AWD,/PERLND/PWATER/MONTHLY/IRR-AWD,PERLND PWAT-PARM1 IRRGFG,TRUE,,"*** <PLS > Allowable Water Depletion at start of each month
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of allowable water depletion at start of each month.
+*** This table is only required if VAWDFG=1 in Table-type IRRIG-PARM1."
+PERLND,MON-IRR-CRDP,/PERLND/PWATER/MONTHLY/IRR-CRDP,PERLND PWAT-PARM1 IRRGFG,TRUE,,"*** <PLS > Crop root depth at start of each month (mm)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of crop root depth at start of each month.  This table
+*** is only required if VCRDFG=1 in Table-type IRRIG-PARM1."
+PERLND,MON-LGTP1,/PERLND/PSTEMP/MONTHLY/LGTP1,PERLND PSTEMP-PARM2,,,"*** <PLS >  Value of LGTP1 at start of each month in Deg C (TSOPFG=1)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of the smoothing factor in lower layer/groundwater
+*** temperature at the start of each month. This table is only required if
+*** LGTVFG in Table-type PSTEMP-PARM1 is 1."
+PERLND,MON-LGTP2,/PERLND/PSTEMP/MONTHLY/LGTP2,PERLND PSTEMP-PARM2,,,"*** <PLS >  Value of LGTP2 at start of each month (deg C) (TSOPFG=0)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of the mean difference between lower layer/ground soil
+*** temperature and air temperature at the start of each month. This table
+*** is only required if LGTVFG in Table-type PSTEMP-PARM1 is 1 and TSOPFG
+*** is 0."
+PERLND,MON-LZETPARM,/PERLND/PWATER/MONTHLY/LZETP,PERLND PWAT-PARM1 VLEFG,,,"*** <PLS >  Lower zone evapotransp   parm at start of each month
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of lower zone E-T parameters at start of each mon. This
+*** table is only required if VLEFG in Table-type PWAT-PARM1 is 1 or 3."
+PERLND,MON-MANNING,/PERLND/PWATER/MONTHLY/NSUR,PERLND PWAT-PARM1 VNNFG,,,"*** <PLS >  Manning's n at start of each month
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of Manning's n at start of each month. This table is
+*** only required if VNNFG in Table-type PWAT-PARM1 is 1"
+PERLND,MON-MELT-FAC,/PERLND/SNOW/MONTHLY/MELT-FAC,PERLND SNOW-PARM1,,,"*** <PLS >  Degree-day snowmelt factor at start of each month (mm/d.C)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of degree-day snowmelt factor at start of each month.
+*** This table is only required if VKMFG in Table-type SNOW-FLAGS is 1."
+PERLND,MON-NITAGUTF,/PERLND/NITR/MONTHLY/NITAGUTF,,,,"*** <PLS >  Monthly above-ground fractions for plant uptake
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** This table specifies monthly fractions of plant uptake from the soil
+*** layer that goes to above-ground plant storage.  The table is used if
+*** plant uptake varies monthly (VNUTFG=1 in Table-type NIT-FLAGS) and
+*** above-ground compartments are being simulated (ALPNFG=1 in Table-type
+*** NIT-FLAGS)."
+PERLND,MON-NITIMAM,/PERLND/NITR/MONTHLY/NITIMAM,,,,"*** <PLS >  Maximum immobilization rate for ammonia (mg/l/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of maximum immobilization rate for ammonia.  This table
+*** is required if the plant uptake parameters vary throughout the year
+*** (VNUTFG=1 in Table-type NIT-FLAGS) and saturation kinetics are being
+*** used (NUPTFG= 2 or -2 in Table-type NIT-FLAGS).  If NUPTFG is 2, the
+*** table repeats for each soil layer."
+PERLND,MON-NITIMNI,/PERLND/NITR/MONTHLY/NITIMNI,,,,"*** <PLS >  Maximum immobilization rate for nitrate (mg/l/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of maximum immobilization rate for nitrate.  This table
+*** is required if the plant uptake parameters vary throughout the year
+*** (VNUTFG=1 in Table-type NIT-FLAGS) and saturation kinetics are being
+*** used (NUPTFG= 2 or -2 in Table-type NIT-FLAGS).  If NUPTFG is 2, the
+*** table repeats for each soil layer."
+PERLND,MON-NITUPAM,/PERLND/NITR/MONTHLY/NITUPAM,,,,"*** <PLS >  Maximum plant uptake rate for ammonia (mg/l/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of maximum plant uptake rate for ammonia.  This table
+*** is required if the plant uptake parameters vary throughout the year
+*** (VNUTFG=1 in Table-type NIT-FLAGS) and saturation kinetics are being
+*** used (NUPTFG= 2 or -2 in Table-type NIT-FLAGS).  If NUPTFG is 2, the
+*** table repeats for each soil layer."
+PERLND,MON-NITUPNI,/PERLND/NITR/MONTHLY/NITUPNI,,,,"*** <PLS >  Maximum plant uptake rate for nitrate (mg/l/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of maximum plant uptake rate for nitrate.  This table
+*** is required if the plant uptake parameters vary throughout the year
+*** (VNUTFG=1 in Table-type NIT-FLAGS) and saturation kinetics are being
+*** used (NUPTFG= 2 or -2 in Table-type NIT-FLAGS).  If NUPTFG is 2, the
+*** table repeats for each soil layer."
+PERLND,MON-NITUPT,/PERLND/NITR/MONTHLY/NITUPT,,,,"*** <PLS >  Plant uptake parm for nitrogen in soil layer (/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of plant uptake reaction rate parameters for nitrogen
+*** This entire table is supplied four times; first for the surface layer,
+*** second for the upper layer, third for the lower layer and fourth for
+*** the active groundwater layer. If omitted default values will be
+*** supplied. This table is required if the plant uptake parameters vary
+*** throughout the year (VNUTFG=1 in Table-type NIT-FLAGS) and first-order
+*** reaction rates are being used (NUPTFG=0 in Table-type NIT-FLAGS)."
+PERLND,MON-NPRETAG,/PERLND/NITR/MONTHLY/NPRETAG,,,,"*** <PLS >  Monthly return rates for above-ground plant nitrogen (/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** This table specifies monthly first-order return rates for above-ground
+*** plant nitrogen to the litter layer.  The table is used if ALPNFG= 1
+*** and VNPRFG=1 in Table-type NIT-FLAGS."
+PERLND,MON-NPRETBG,/PERLND/NITR/MONTHLY/NPRETBG,,,,"*** <PLS >  Monthly return rates for below-ground plant nitrogen (/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** This table specifies monthly first-order return rates for below-ground
+*** plant nitrogen to each soil layer in the form of particulate organic
+*** N.  The table is used if VNPRFG=1 in Table-type NIT-FLAGS.  It is
+*** repeated four times, once for each soil layer."
+PERLND,MON-NPRETFBG,/PERLND/NITR/MONTHLY/NPRETFBG,,,,"*** <PLS >  Monthly refractory fractions for below-ground plant N return
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** This table specifies monthly refractory fractions for below-ground
+*** plant nitrogen return.  The table is used if plant return rates vary
+*** monthly (VNPRFG=1 in Table-type NIT-FLAGS)."
+PERLND,MON-NPRETFLI,/PERLND/NITR/MONTHLY/NPRETFLI,,,,"*** <PLS >  Monthly refractory fractions for litter N return
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** This table specifies monthly refractory fractions for litter nitrogen
+*** return.  The table is used if plant return rates vary monthly
+*** (VNPRFG=1 in Table-type NIT-FLAGS) and above-ground compartments are
+*** being simulated (ALPNFG=1 in Table-type NIT-FLAGS)."
+PERLND,MON-NPRETLI,/PERLND/NITR/MONTHLY/NPRETLI,,,,"*** <PLS >  Monthly return rates for litter compartment nitrogen (/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** This table specifies monthly first-order return rates for litter layer
+*** nitrogen to the soil layer.  The table is used if ALPNFG= 1 and
+*** VNPRFG=1 in Table-type NIT-FLAGS.  It is repeated twice, for the
+*** surface and upper soil layers only."
+PERLND,MON-NUPT-FR1,/PERLND/NITR/MONTHLY/NUPT-FR1,,,,"*** <PLS >  Monthly fractions of total annual N uptake
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Fractions of the total annual nitrogen uptake target applied to each
+*** month.  This table is required when yield-based plant uptake is being
+*** used (NUPTFG=1 in Table-type NIT-FLAGS)."
+PERLND,MON-NUPT-FR2,/PERLND/NITR/MONTHLY/NUPT-FRI2,,,,"*** <PLS >  Monthly fractions of N uptake from soil layer
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Fractions of the monthly nitrogen uptake target taken from each soil
+*** layer.  This table appears four times (once each for the surface,
+*** upper, lower, and active groundwater layers) and is required when
+*** yield-based plant uptake is being used (NUPTFG=1 in Table-type NIT-
+*** FLAGS).  The sum of the four fractions for a month must be unity.  The
+*** actual monthly N uptake target for a soil layer is the total annual
+*** target (NUPTGT in Table-type NIT-YIELD) times the monthly fraction (in
+*** Table-type MON-NUPT-FR1) times the layer fraction for the month."
+PERLND,MON-NVSI,/PERLND/SEDMNT/MONTHLY/NVSI,PERLND SED-PARM2,TRUE,,"*** <PLS >  Monthly net vertical sediment input (kg/ha.day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly net vertical sediment input. This table is only required if
+*** VSIVFG in Table-type SED-PARM1 is 1."
+PERLND,MON-PHOSUPT,/PERLND/PHOS/MONTHLY/PHOSUPT,,,,"*** <PLS > Monthly phosphorus uptake parameters for soil layer (/day)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of first-order plant phosphorus uptake reaction rate
+*** parameters.  This table is required if VPUTFG=1 and PUPTFG=0 in Table-
+*** type PHOS-FLAGS.  The entire table is supplied four times; first for
+*** the surface layer, second for the upper layer, third for the lower
+*** layer and fourth for the active groundwater layer.  If omitted,
+*** default values will be supplied."
+PERLND,MON-POTFS,/PERLND/PQUAL/MONTHLY/POTFS,PERLND QUAL-INPUT,TRUE,,"*** <PLS >  Value at start of each month for scour potency factor (qty/tonne)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of scour potency factor at start of each month. This
+*** table is only required if VPFSFG in Table-type QUAL-PROPS is 1. This
+*** table should be repeated for each quality constituent."
+PERLND,MON-POTFW,/PERLND/PQUAL/MONTHLY/POTFW,PERLND QUAL-INPUT,TRUE,,"*** <PLS >  Value at start of each month for washoff potency factor (qty/tonn)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of washoff potency factor at start of each month. This
+*** table is only required if VPFWFG in Table-type QUAL-PROPS is 1. This
+*** table should be repeated for each quality constituent."
+PERLND,MON-PUPT-FR1,/PERLND/PHOS/MONTHLY/PUPT-FR1,,,,"*** <PLS >  Monthly fractions of total annual P uptake
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Fractions of the total annual phosphorus uptake target applied to each
+*** month.  This table is required when yield-based plant uptake is being
+*** used (PUPTFG=1 in Table-type PHOS-FLAGS)."
+PERLND,MON-PUPT-FR2,/PERLND/PHOS/MONTHLY/PUPT-FR2,,,,"*** <PLS >  Monthly fractions of P uptake from soil layer
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Fractions of the monthly phosphorus uptake target taken from each soil
+*** layer.  This table appears four times (once each for the surface,
+*** upper, lower, and active groundwater layers) and is required when
+*** yield-based plant uptake is being used (PUPTFG=1 in Table-type PHOS-
+*** FLAGS).  The sum of the four fractions for a month must be unity.  The
+*** actual monthly P uptake target for a soil layer is the total annual
+*** target (PUPTGT in Table-type PHOS-YIELD) times the monthly fraction
+*** (in Table-type MON-PUPT-FR1) times the layer fraction for the month."
+PERLND,MON-SQOLIM,/PERLND/PQUAL/MONTHLY/SQOLIM,PERLND QUAL-INPUT,TRUE,,"*** <PLS >  Value at start of month for limiting storage of QUALOF (qty/ha)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values limiting storage of QUALOF at start of each month. This
+*** table is only required if VQOFG in Table-type QUAL-PROPS is 1. This
+*** table should be repeated for each quality constituent."
+PERLND,MON-ULTP1,/PERLND/PSTEMP/MONTHLY/ULTP1,PERLND PSTEMP-PARM2,,,"*** <PLS >  Value of ULTP1 at start of each month in deg C (TSOPFG=1)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of the smoothing factor in upper layer temperature
+*** calculation at the start of each month. This table is only required if
+*** ULTVFG in Table-type PSTEMP-PARM1 is 1."
+PERLND,MON-ULTP2,/PERLND/PSTEMP/MONTHLY/ULTP2,PERLND PSTEMP-PARM2,,,"*** <PLS >  Value of ULTP2 at start of each month in Deg C/C (TSOPFG=1)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of the mean difference between upper layer soil
+*** temperature and air temperature at the start of each month. This table
+*** is only required if ULTVFG in Table-type PSTEMP-PARM1 is 1."
+PERLND,MON-UZSN,/PERLND/PWATER/MONTHLY/UZSN,PERLND PWAT-PARM1 VUZFG,,,"*** <PLS >  Upper zone storage at start of each month  (mm)
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC","*** Monthly values of upper zone nominal storage at start of each mo This
+*** table is only required if VUZFG in Table-type PWAT-PARM1 is"
+PERLND,MST-PARM,/PERLND/MSTLAY/PARAMETERS,,TRUE,,"*** <PLS >     SLMPF      ULPF      LLPF
+*** x -  x",*** Factors used to adjust solute leaching rates (section MSTLAY).
+PERLND,MST-SUBFLX,/PERLND/MSTLAY/PARAMETERS,,TRUE,,"*** <PLS >  Subsurface fractional fluxes (/ivl)
+*** x -  x       FLP      FLDP       FAO","*** Initial fractional fluxes in subsurface layers (section MSTLAY).
+*** Usually, this table should be omitted and the default values taken."
+PERLND,MST-SUBSTOR,/PERLND/MSTLAY/PARAMETERS,,TRUE,,"*** <PLS >  Subsoil moisture (kg/ha)
+*** x -  x     LMSTM     AMSTM","*** Initial moisture storage in subsurface layers (section MSTLAY).
+*** Usually, this table should be omitted and the default values taken."
+PERLND,MST-TOPFLX,/PERLND/MSTLAY/PARAMETERS,,TRUE,,"*** <PLS >   Fractional fluxes in topsoil layers (/ivl)
+*** x -  x       FSO       FSP       FII       FUP       FIO",*** Initial fractional fluxes in topsoil layers (section MSTLAY).
+PERLND,MST-TOPSTOR,/PERLND/MSTLAY/PARAMETERS,,TRUE,,"*** <PLS >      Topsoil storages (kg/ha)
+*** x -  x     SMSTM     UMSTM     IMSTM",*** Initial moisture storage in each topsoil layer (section MSTLAY).
+PERLND,NIT-AD-FLAGS,/PERLND/NITR/FLAGS,,,,"***          Atmospheric Deposition Flags
+***        <----NO3---->  <----NH3---->  <---ORGN---->
+*** <PLS > <surf> <uppr>  <surf> <uppr>  <surf> <uppr>
+*** x -  x <F><C> <F><C>  <F><C> <F><C>  <F><C> <F><C>",*** Nitrogen atmospheric deposition flags.
+PERLND,NIT-AGPLRET,/PERLND/NITR/PARAMETERS,,,,"***  Above-ground plant return rates and refractory fraction
+*** <PLS >    AGKPRN    SKPRLN    UKPRLN    LINPRF
+*** x -  x    (/day)    (/day)    (/day)","*** This table is used to specify first-order rates of return of above-
+*** ground plant and litter nitrogen.  Litter rates are given for the top
+*** two soil layers, plus the fraction returning as particulate refractory
+*** organic N instead of particulate labile organic N.  These rates are
+*** not adjusted for temperature.  This table is only input if the above-
+*** ground compartments are being simulated (ALPNFG=1 in Table-type NIT-
+*** FLAGS) and plant return rates are constant (VPLRFG=0 in Table-type
+*** NIT-FLAGS)."
+PERLND,NIT-AGUTF,/PERLND/NITR/PARAMETERS,,,,"*** <PLS >    SANUTF    UANUTF    LANUTF    AANUTF
+*** x -  x","*** This table is used only when the above-ground and litter compartments
+*** are being used (ALPNFG=1 in Table-type NIT-FLAGS) and plant uptake is
+*** constant (VNUTFG=0 in Table-type NIT-FLAGS)."
+PERLND,NIT-AMVOLAT,/PERLND/NITR/PARAMETERS,,,,"*** <PLS >     SKVOL     UKVOL     LKVOL     AKVOL     THVOL    TRFVOL
+*** x -  x    (/day)    (/day)    (/day)    (/day)       (-)   (deg C)","*** These are the parameters for ammonia volatilization.  This table is
+*** required if AMVOFG=1 in Table-type NIT-FLAGS."
+PERLND,NIT-BGPLRET,/PERLND/NITR/PARAMETERS,,,,"***  Below-ground plant return rates and refractory fraction
+*** <PLS >    SKPRBN    UKPRBN    LKPRBN    AKPRBN    BGNPRF
+*** x -  x    (/day)    (/day)    (/day)    (/day)","*** This table is used to specify first-order rates of return of below-
+*** ground plant nitrogen.  Rates are given for the four soil layers, plus
+*** the fraction returning as particulate refractory organic N instead of
+*** particulate labile organic N.  These rates are not adjusted for
+*** temperature.  This table is used if plant return rates are constant
+*** (VPLRFG=0 in Table-type NIT-FLAGS)."
+PERLND,NIT-CMAX,/PERLND/NITR/NITR,,,,"*** <PLS >      CMAX
+*** x -  x     (ppm)","*** Maximum solubility of ammonium. This table only appears once and is
+*** only required if FORAFG=1."
+PERLND,NIT-FLAGS,/PERLND/NITR/NITR,,,,"*** <PLS > Nitrogen flags
+*** x -  x VNUT FORA ITMX BNUM CNUM NUPT FIXN AMVO ALPN VNPR",*** Flags for nitrogen simulation in PERLND segment.
+PERLND,NIT-FSTGEN,/PERLND/NITR/NITR,,,,"*** <PLS > Upt-facts<--------- Temp-parms (theta) --------->
+*** x -  x  NO3  NH4  PLN KDSA KADA KIMN  KAM KDNI  KNI KIMA","*** Nitrogen first-order general parameters.  If this table is omitted
+*** default values will be supplied."
+PERLND,NIT-FSTPM,/PERLND/NITR/NITR,,,,"*** <PLS >    Nitrogen first-order parameters (/day)
+*** x -  x     KDSAM     KADAM     KIMNI       KAM      KDNI       KNI     KIM","*** Nitrogen first-order reaction parameters. HSPF expects this table to
+*** appear four times in the User's Control Input; first for the surface
+*** layer, second for the upper layer, third for the lower layer, fourth
+*** for the active groundwater layer.  If one or more occurrences of the
+*** table are missing, all reaction parameters for the affected layer(s)
+*** will be defaulted to zero."
+PERLND,NIT-ORGPM,/PERLND/NITR/PARAMETERS,,,,"*** <PLS >      KLON      KRON     KONLR     THNLR
+*** x -  x                        (/day)","*** This table is required only to simulate multiple forms of organic N
+*** instead of just particulate labile.  The entire table is repeated for
+*** each soil layer."
+PERLND,NIT-STOR1,/PERLND/NITR/NITR,,,,"*** <PLS >Initial storage of N (kg/ha)
+*** x -  x     LORGN      AMAD      AMSU       NO3      PLTN     RORGN","*** Initial storage of nitrogen. The values given in this table apply to
+*** one of the following four soil storages: surface, upper principal,
+*** lower or groundwater."
+PERLND,NIT-STOR2,/PERLND/NITR/PARAMETERS,,,,"*** <PLS >  Initial N in interflow, above-ground, and litter storage (kg/ha)
+*** x -  x     IAMSU      INO3     ISLON     ISRON    AGPLTN    LITTRN","*** Initial storage of nitrogen in upper layer transitory (interflow)
+*** and above-ground plant and litter compartments. It specifies the
+*** initial storage of ammonium, nitrate and organic N in the interflow
+*** storage, and the nitrogen in the two plant N compartments."
+PERLND,NIT-SVALPM,/PERLND/NITR/NITR,,,,"*** <PLS >      XFIX        K1        N1
+*** x -  x     (ppm)","*** Nitrogen single value Freundlich adsorption/desorption parameter HSPF
+*** expects this table to appear four times in the User's Control Input;
+*** first for the surface layer, second for the upper layer, third for the
+*** lower layer, fourth for the active groundwater layer.  If one or more
+*** occurrences of the table are missing, all reaction parameters for the
+*** affected layer(s) will be defaulted to zero. This table is only
+*** required if FORAFG=1."
+PERLND,NIT-UPIMCSAT,/PERLND/NITR/PARAMETERS,,,,"*** <PLS >     CSUNI     CSUAM     CSINI     CSIAM
+*** x -  x    (ug/l)    (ug/l)    (ug/l)    (ug/l)","*** These are the half saturation constants for nitrogen uptake and
+*** immobilization when using saturation kinetics (NUPTFG= 2 or -2 in
+*** Table-type NIT-FLAGS).  If NUPTFG is 2, the table repeats for each
+*** soil layer."
+PERLND,NIT-UPIMKMAX,/PERLND/NITR/PARAMETERS,,,,"*** <PLS > Maximum plant uptake and immobilization rates (mg/l/day)
+*** x -  x     KUPNI     KUPAM     KIMNI     KIMAM","*** These are the maximum rate constants for nitrogen uptake and
+*** immobilization when using saturation kinetics (NUPTFG= 2 or -2 in
+*** Table-type NIT-FLAGS) and rate constants do not vary monthly (VNUTFG=0
+*** in Table-type NIT-FLAGS).  If NUPTFG is 2, the table repeats for each
+*** soil layer."
+PERLND,NIT-UPTAKE,/PERLND/NITR/NITR,,,,"*** <PLS >Nitrogen plant uptake rates (/day)
+*** x -  x   Surface     Upper     Lower   Groundw","*** Nitrogen plant uptake rate parameters. This table is only required if
+*** VNUTFG=0 and NUPTFG=0."
+PERLND,NIT-YIELD,/PERLND/NITR/PARAMETERS,,,,"*** <PLS >    NUPTGT    NMXRAT
+*** x -  x   (kg/ha)       (-)","*** This table is required when yield-based plant uptake is being
+*** simulated (NUPTFG=1 in Table-type NIT-FLAGS)."
+PERLND,NQUALS,/PERLND/PQUAL/PQUAL,PERLND QUAL-INPUT,TRUE,,"*** <PLS >
+*** x -  xNQUAL","*** The total number of quality constituents simulated in section PQUAL is
+*** indicated in this table."
+PERLND,PEST-AD-FLAGS,/PERLND/PEST/FLAGS,,,,"***                   Atmospheric Deposition Flags
+***        <-------PEST1------>  <-------PEST2------>  <-------PEST3------>
+*** <PLS > <cry-> <ads-> <sol->  <cry-> <ads-> <sol->  <cry-> <ads-> <sol->
+*** x -  x <F><C> <F><C> <F><C>  <F><C> <F><C> <F><C>  <F><C> <F><C> <F><C>",*** Pesticide atmospheric deposition flags.
+PERLND,PEST-CMAX,/PERLND/PEST/PEST,,,3,"*** <PLS >      CMAX
+*** x -  x     (ppm)","*** Maximum solubility of pesticide. This table is only required if
+*** ADOPFG=2 or 3 for this pesticide. This table should be repeated for
+*** each pesticide."
+PERLND,PEST-DEGRAD,/PERLND/PEST/PARAMETERS,,,3,"*** <PLS >    Pesticide degradation rates (/day)
+*** x -  x   Surface     Upper     Lower   Groundw","*** Pesticide degradation rates. This table should be repeated for each
+*** pesticide."
+PERLND,PEST-FIRSTPM_groundwater,/PERLND/PEST/PEST,,,3,"*** <PLS >First-order parms (/day)
+*** x -  x     KDSPS     KADPS","*** Pesticide first-order parameters. This table is only required if
+*** ADOPFG=1 for this pesticide. Then system expects it to appear four
+*** times for this pesticide; first the surface layer, second for the
+*** upper layer, etc. This table should be repeated for each pesticide."
+PERLND,PEST-FIRSTPM_lower,/PERLND/PEST/PEST,,,3,"*** <PLS >First-order parms (/day)
+*** x -  x     KDSPS     KADPS","*** Pesticide first-order parameters. This table is only required if
+*** ADOPFG=1 for this pesticide. Then system expects it to appear four
+*** times for this pesticide; first the surface layer, second for the
+*** upper layer, etc. This table should be repeated for each pesticide."
+PERLND,PEST-FIRSTPM_surface,/PERLND/PEST/PEST,,,3,"*** <PLS >First-order parms (/day)
+*** x -  x     KDSPS     KADPS","*** Pesticide first-order parameters. This table is only required if
+*** ADOPFG=1 for this pesticide. Then system expects it to appear four
+*** times for this pesticide; first the surface layer, second for the
+*** upper layer, etc. This table should be repeated for each pesticide."
+PERLND,PEST-FIRSTPM_upper,/PERLND/PEST/PEST,,,3,"*** <PLS >First-order parms (/day)
+*** x -  x     KDSPS     KADPS","*** Pesticide first-order parameters. This table is only required if
+*** ADOPFG=1 for this pesticide. Then system expects it to appear four
+*** times for this pesticide; first the surface layer, second for the
+*** upper layer, etc. This table should be repeated for each pesticide."
+PERLND,PEST-FLAGS,/PERLND/PEST/PEST,,,1,"*** <PLS > NPST|Max iterations|Adsorp option
+*** x -  x     |Pst1 Pst2 Pst3|Pst1 Pst2 Pst3",*** Flags for pesticide simulation.
+PERLND,PEST-ID,/PERLND/PEST/PEST,,,3,"*** <PLS >           Pesticide
+*** x -  x",*** Name of pesticide. This table should be repeated for each pesticide.
+PERLND,PEST-NONSVPM_groundwater,/PERLND/PEST/PEST,,,3,"*** <PLS >      XFIX        K1        N1        N2
+*** x -  x     (ppm)","*** Pesticide parameters for Non-single value Freundlich method. This
+*** table is only used if ADOPFG=3 for this pesticide.  Then, the system
+*** expects it to appear four times for this pesticide; first the surface
+*** layer, second for the upper layer, etc. This table should be repeated
+*** for each pesticide."
+PERLND,PEST-NONSVPM_lower,/PERLND/PEST/PEST,,,3,"*** <PLS >      XFIX        K1        N1        N2
+*** x -  x     (ppm)","*** Pesticide parameters for Non-single value Freundlich method. This
+*** table is only used if ADOPFG=3 for this pesticide.  Then, the system
+*** expects it to appear four times for this pesticide; first the surface
+*** layer, second for the upper layer, etc. This table should be repeated
+*** for each pesticide."
+PERLND,PEST-NONSVPM_surface,/PERLND/PEST/PEST,,,3,"*** <PLS >      XFIX        K1        N1        N2
+*** x -  x     (ppm)","*** Pesticide parameters for Non-single value Freundlich method. This
+*** table is only used if ADOPFG=3 for this pesticide.  Then, the system
+*** expects it to appear four times for this pesticide; first the surface
+*** layer, second for the upper layer, etc. This table should be repeated
+*** for each pesticide."
+PERLND,PEST-NONSVPM_upper,/PERLND/PEST/PEST,,,3,"*** <PLS >      XFIX        K1        N1        N2
+*** x -  x     (ppm)","*** Pesticide parameters for Non-single value Freundlich method. This
+*** table is only used if ADOPFG=3 for this pesticide.  Then, the system
+*** expects it to appear four times for this pesticide; first the surface
+*** layer, second for the upper layer, etc. This table should be repeated
+*** for each pesticide."
+PERLND,PEST-STOR1_groundwater,/PERLND/PEST/PEST,,,3,"*** <PLS >Initial pesticide in surface layer (kg/ha)
+*** x -  x     Cryst       Ads      Soln","*** Initial pesticide storage.  The values given in this table apply to
+*** one of the following four soil storages: surface, upper principal,
+*** lower or groundwater.  This table should be repeated for each
+*** pesticide."
+PERLND,PEST-STOR1_lower,/PERLND/PEST/PEST,,,3,"*** <PLS >Initial pesticide in surface layer (kg/ha)
+*** x -  x     Cryst       Ads      Soln","*** Initial pesticide storage.  The values given in this table apply to
+*** one of the following four soil storages: surface, upper principal,
+*** lower or groundwater.  This table should be repeated for each
+*** pesticide."
+PERLND,PEST-STOR1_surface,/PERLND/PEST/PEST,,,3,"*** <PLS >Initial pesticide in surface layer (kg/ha)
+*** x -  x     Cryst       Ads      Soln","*** Initial pesticide storage.  The values given in this table apply to
+*** one of the following four soil storages: surface, upper principal,
+*** lower or groundwater.  This table should be repeated for each
+*** pesticide."
+PERLND,PEST-STOR1_upper,/PERLND/PEST/PEST,,,3,"*** <PLS >Initial pesticide in surface layer (kg/ha)
+*** x -  x     Cryst       Ads      Soln","*** Initial pesticide storage.  The values given in this table apply to
+*** one of the following four soil storages: surface, upper principal,
+*** lower or groundwater.  This table should be repeated for each
+*** pesticide."
+PERLND,PEST-STOR2,/PERLND/PEST/PEST,,,3,"*** <PLS > Interflow (kg/ha)
+*** x -  x   storage","*** Initial pesticide stored in upper layer transitory (interflow)
+*** storage. This table should be repeated for each pesticide."
+PERLND,PEST-SVALPM_groundwater,/PERLND/PEST/PEST,,,3,"*** <PLS >      XFIX        K1        N1
+*** x -  x     (ppm)","*** Pesticide parameters for single value Freundlich method. This table is
+*** only required if ADOPFG=2 for this pesticide.  The system expects it
+*** to appear four times for this pesticide; first the surface layer,
+*** second for the upper layer, etc. This table should be repeated for
+*** each pesticide."
+PERLND,PEST-SVALPM_lower,/PERLND/PEST/PEST,,,3,"*** <PLS >      XFIX        K1        N1
+*** x -  x     (ppm)","*** Pesticide parameters for single value Freundlich method. This table is
+*** only required if ADOPFG=2 for this pesticide.  The system expects it
+*** to appear four times for this pesticide; first the surface layer,
+*** second for the upper layer, etc. This table should be repeated for
+*** each pesticide."
+PERLND,PEST-SVALPM_surface,/PERLND/PEST/PEST,,,3,"*** <PLS >      XFIX        K1        N1
+*** x -  x     (ppm)","*** Pesticide parameters for single value Freundlich method. This table is
+*** only required if ADOPFG=2 for this pesticide.  The system expects it
+*** to appear four times for this pesticide; first the surface layer,
+*** second for the upper layer, etc. This table should be repeated for
+*** each pesticide."
+PERLND,PEST-SVALPM_upper,/PERLND/PEST/PEST,,,3,"*** <PLS >      XFIX        K1        N1
+*** x -  x     (ppm)","*** Pesticide parameters for single value Freundlich method. This table is
+*** only required if ADOPFG=2 for this pesticide.  The system expects it
+*** to appear four times for this pesticide; first the surface layer,
+*** second for the upper layer, etc. This table should be repeated for
+*** each pesticide."
+PERLND,PEST-THETA,/PERLND/PEST/PEST,,,3,"*** <PLS >   Temperature parms
+*** x -  x    THDSPS    THADPS","*** Pesticide first-order reaction temperature correction parameters to
+*** adjust the desorption and adsorption rate parameters. This table is
+*** only required if ADOPFG=1 in Table-type PEST-FLAGS This table should
+*** be repeated for each pesticide."
+PERLND,PHOS-AD-FLAGS,/PERLND/PHOS/FLAGS,,,,"***        Atmospheric Deposition Flags
+***        <----PO4---->  <---ORGP---->
+*** <PLS > <surf> <uppr>  <surf> <uppr>
+*** x -  x <F><C> <F><C>  <F><C> <F><C>",*** Phosphorus atmospheric deposition flags.
+PERLND,PHOS-CMAX,/PERLND/PHOS/PARAMETERS,,,,"*** <PLS >      CMAX
+*** x -  x     (ppm)","*** Maximum solubility of phosphate. This table only appears once and is
+*** only required if FORPFG=1."
+PERLND,PHOS-FLAGS,/PERLND/PHOS/FLAGS,,,,"*** <PLS > Phosphorus flags.
+*** x -  x VPUT FORP ITMX BNUM CNUM PUPT",*** Flags governing simulation of phosphorus.
+PERLND,PHOS-FSTGEN,/PERLND/PHOS/PARAMETERS,,,,"*** <PLS > Temperature corection parameters (theta)
+*** x -  x     THPLP    THKDSP    THKADP    THKIMP     THKMP",*** Temperature correction parameters for phosphorus reactions.
+PERLND,PHOS-FSTPM,/PERLND/PHOS/PHOS,,,,"*** <PLS > Phosphorus first-order parameters  (/day)
+*** x -  x      KDSP      KADP      KIMP       KMP","*** Phosphorus first-order reaction parameters.  The entire table has to
+*** be supplied four times; first for the surface layer, second for the
+*** upper layer, third for the lower layer and fourth for the active
+*** groundwater layer.  If one or more occurrences of the table are
+*** missing, all reaction parameters for the affected layer(s) will be
+*** defaulted to zero."
+PERLND,PHOS-STOR1,/PERLND/PHOS/PHOS,,,,"*** <PLS >  Initial phosphorus in soil layer (kg/ha)
+*** x -  x      ORGP      P4AD      P4SU      PLTP","*** Initial phosphorus storage in a specified layer. The values given in
+*** this table apply to one of the following soil storages: surface, upper
+*** principal, lower or groundwater."
+PERLND,PHOS-STOR2,/PERLND/PHOS/PARAMETERS,,,,"*** <PLS >  Phosphate in interflow (kg/ha)
+*** x -  x     IP4SU","*** This table specifies the initial storage of phosphate in upper layer
+*** transitory (interflow) storage."
+PERLND,PHOS-SVALPM,/PERLND/PHOS/PHOS,,,,"***        Parameters for Freundlich method
+*** <PLS >      XFIX        K1        N1
+*** x -  x     (ppm) (complex)","*** Phosphorus single value Freundlich adsorption/desorption parameter
+*** This table is only used if FORPFG=1 in Table-type PHOS-FLAGS.  The
+*** system expects this table to appear four times; first for the surface
+*** layer, second for the upper layer, third for the lower layer and
+*** fourth for the active groundwater layer."
+PERLND,PHOS-UPTAKE,/PERLND/PHOS/PARAMETERS,,,,"*** <PLS > Phosphorus plant uptake parms (/day)
+*** x -  x     SKPLP     UKPLP     LKPLP     AKPLP","*** Phosphorus first-order plant uptake parameters.  This table is only
+*** required if VPUTFG=0 and PUPTFG=0."
+PERLND,PHOS-YIELD,/PERLND/PHOS/PARAMETERS,,,,"*** <PLS >    PUPTGT    PMXRAT
+*** x -  x   (kg/ha)       (-)","*** This table is required when yield-based plant uptake is being
+*** simulated (PUPTFG=1 in Table-type PHOS-FLAGS)."
+PERLND,PQL-AD-FLAGS,/PERLND/PQUAL/FLAGS,PERLND QUAL-INPUT,TRUE,,"***                        Atmospheric Deposition Flags
+***  <PLS>  QUAL1  QUAL2  QUAL3  QUAL4  QUAL5  QUAL6  QUAL7  QUAL8  QUAL9 QUAL10
+*** x -  x <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C>",*** Quality constituent atmospheric deposition flags.
+PERLND,PRINT-INFO,/PERLND/GENERAL/PRINT,PERLND ACTIVITY,,,"*** <PLS >                       Print-flags                           PIVL  PYR
+*** x -  x ATMP SNOW PWAT  SED  PST  PWG PQAL MSTL PEST NITR PHOS TRAC","*** HSPF permits the user to vary the printout level (maximum
+*** frequency) for the various active sections of an operation: 2 means
+*** every PIVL intervals, 3 means every day, 4 means every month, 5
+*** means every year, 6 means never."
+PERLND,PSTEMP-PARM1,/PERLND/PSTEMP/PARAMETERS,PERLND PSTEMP-PARM2,TRUE,,"*** <PLS >  Flags for section PSTEMP
+*** x -  x SLTV ULTV LGTV TSOP",*** Temperature simulation flags for section PSTEMP.
+PERLND,PSTEMP-PARM2,/PERLND/PSTEMP/PARAMETERS,PERLND ACTIVITY PSTEMP,,,"*** <PLS >      ASLT      BSLT     ULTP1     ULTP2     LGTP1     LGTP2
+*** x -  x   (deg C)   (deg C)             (deg C)             (deg C)",*** Second group of PSTEMP (temperature estimating) parameters.
+PERLND,PSTEMP-TEMPS,/PERLND/PSTEMP/PARAMETERS,PERLND PSTEMP-PARM2,TRUE,,"*** <PLS >  Initial temperatures (deg C)
+*** x -  x     AIRTC     SLTMP     ULTMP     LGTMP",*** PSTEMP initial temperature parameters.
+PERLND,PWAT-CANOPY,/PERLND/PWATER/CANOPY,,,,"*** <PLS >    CANOPY         CANOPY     CEPSC      CEPS
+*** x -  x         #           NAME      (mm)      (mm)   ","*** Name, interception storage capacity and initial interception storage
+*** for this canopy layer."
+PERLND,PWAT-PARM1,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM2,TRUE,,"    <PLS >***                Flags
+*** x -  x CSNO RTOP UZFG  VCS  VUZ  VNN VIFW VIRC  VLE IFFC  HWT IRRG IFRD NCAN",*** First group of PWATER Parameters (flags).
+PERLND,PWAT-PARM2,/PERLND/PWATER/PARAMETERS,PERLND ACTIVITY PWATER,,,"*** <PLS>    FOREST      LZSN    INFILT      LSUR     SLSUR     KVARY     AGWRC
+*** x -  x               (mms)  (mms/hr)       (m)             (1/mms)   (1/day)",*** Second group of PWATER Parameters.
+PERLND,PWAT-PARM3,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM2,TRUE,,"*** <PLS>    PETMAX    PETMIN    INFEXP    INFILD    DEEPFR    BASETP    AGWETP
+*** x -  x   (deg C)   (deg C)",*** Third group of PWATER Parameters.
+PERLND,PWAT-PARM4,/PERLND/PWATER/PARAMETERS,PERLND ACTIVITY PWATER,,,"*** <PLS >     CEPSC      UZSN      NSUR     INTFW       IRC     LZETP
+*** x -  x     (mms)     (mms)                       (1/day)",*** Fourth group of PWATER Parameters.
+PERLND,PWAT-PARM5,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM2,TRUE,,"*** <PLS >       FZG      FZGL
+*** x -  x",*** Fifth group of PWATER Parameters.
+PERLND,PWAT-PARM6,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM2,,,"*** <PLS >     MELEV      BELV    GWDATM       PCW       PGW      UPGW
+*** x -  x       (m)       (m)       (m)",*** Sixth group of PWATER Parameters.
+PERLND,PWAT-PARM7,/PERLND/PWATER/PARAMETERS,PERLND PWAT-PARM2,,,"*** <PLS>    STABNO      SRRC     SREXP     IFWSC     DELTA    UELFAC    LELFAC
+*** x -  x               (/hr)                (mm)      (mm)",*** Seventh group of PWATER Parameters.
+PERLND,PWAT-STATE1,/PERLND/PWATER/STATES,PERLND PWAT-PARM2,TRUE,,"*** <PLS>  PWATER state variables (mms)
+*** x -  x      CEPS      SURS       UZS      IFWS       LZS      AGWS      GWVS",*** This table is used to specify the initial water storages.
+PERLND,PWT-GASES,/PERLND/PWTGAS/PARAMETERS,PERLND ACTIVITY PWTGAS,TRUE,,"***                   Initial DO and CO2 concentrations
+*** <PLS >     SODOX     SOCO2     IODOX     IOCO2     AODOX     AOCO2
+*** x -  x    (mg/l)  (mg C/l)    (mg/l)   (mg C/l)   (mg/l)  (mg C/l)",*** Initial DO and CO2 concentration values for section PWTGAS.
+PERLND,PWT-PARM1,/PERLND/PWTGAS/PARAMETERS,PERLND ACTIVITY PWTGAS,TRUE,,"*** <PLS >  Flags for section PWTGAS
+*** x -  x  IDV  ICV  GDV  GVC","*** Flags for section PWTGAS.  These flags each indicate whether or not a
+*** parameter is allowed to vary throughout the year and, thus whether or
+*** not the corresponding table of monthly values will be provided."
+PERLND,PWT-PARM2,/PERLND/PWTGAS/PARAMETERS,PERLND ACTIVITY PWTGAS,TRUE,,"***         Second group of PWTGAS parms
+*** <PLS >      ELEV     IDOXP     ICO2P     ADOXP     ACO2P
+*** x -  x      (m)     (mg/l)  (mg C/l)    (mg/l)  (mg C/l)","*** Second group of PWTGAS parameters to estimate water temperature
+*** concentrations of dissolved gases."
+PERLND,PWT-TEMPS,/PERLND/PWTGAS/PARAMETERS,PERLND ACTIVITY PWTGAS,TRUE,,"*** <PLS >    Initial water temperatures (deg C)
+*** x -  x     SOTMP     IOTMP     AOTMP",*** Initial water temperature values for section PWTGAS.
+PERLND,QUAL-INPUT,/PERLND/PQUAL/PQUAL,PERLND QUAL-INPUT,TRUE,,"***         Storage on surface and nonseasonal parameters
+***            SQO   POTFW   POTFS   ACQOP  SQOLIM   WSQOP    IOQC    AOQC
+*** <PLS >    qty/    qty/    qty/    qty/  qty/ha   mm/hr   qty/l   qty/l
+*** x -  x      ha   tonne   tonne  ha.day","*** Storage on surface and nonseasonal parameter values for section This
+*** table should be repeated for each quality constituent."
+PERLND,QUAL-PROPS,/PERLND/PQUAL/PQUAL,PERLND ACTIVITY PQUAL,,,"*** <PLS >  Identifiers and Flags
+*** x -  x    QUALID      QTID  QSD VPFW VPFS  QSO  VQO QIFW VIQC QAGW VAQC","*** Identifiers and flags for a quality constituent. This table should be
+*** repeated for each quality constituent."
+PERLND,SED-PARM1,/PERLND/SEDMNT/PARAMETERS,PERLND SED-PARM2,TRUE,,"*** <PLS >  Sediment parameters 1
+*** x -  x  CRV VSIV SDOP",*** First group of sediment simulation parameters.
+PERLND,SED-PARM2,/PERLND/SEDMNT/PARAMETERS,PERLND ACTIVITY SEDMNT,,,"*** <PLS >      SMPF      KRER      JRER     AFFIX     COVER      NVSI
+*** x -  x                                  (/day)           kg/ha-day","*** Second group of sediment simulation parameters. If monthly values for
+*** COVER and NVSI are being supplied, values supplied for these variables
+*** in this table are not relevant."
+PERLND,SED-PARM3,/PERLND/SEDMNT/PARAMETERS,PERLND ACTIVITY SEDMNT,,,"*** <PLS >  Sediment parameter 3
+*** x -  x      KSER      JSER      KGER      JGER",*** Third group of sediment simulation parameters.
+PERLND,SED-STOR,/PERLND/SEDMNT/PARAMETERS,PERLND SED-PARM2,TRUE,,"*** <PLS >  Detached sediment storage (tonne/ha)
+*** x -  x      DETS",*** DETS is the initial storage of detached sediment.
+PERLND,SNOW-FLAGS,/PERLND/SNOW/FLAGS,PERLND SNOW-PARM1,,,"*** <PLS >
+*** x -  x SNOP  VKM ",*** Snow flags.
+PERLND,SNOW-INIT1,/PERLND/SNOW/STATES,PERLND SNOW-PARM1,,,"*** <PLS > Pack-snow  Pack-ice Pack-watr    RDENPF      DULL    PAKTMP
+*** x -  x      (mm)      (mm)      (mm)                       (deg C)",*** First group of initial values for SNOW simulation.
+PERLND,SNOW-INIT2,/PERLND/SNOW/STATES,PERLND SNOW-PARM1,,,"*** <PLS >    COVINX    XLNMLT    SKYCLR
+*** x -  x      (mm)      (mm)",*** Second group of initial values for SNOW simulation.
+PERLND,SNOW-PARM1,/PERLND/SNOW/PARAMETERS,PERLND ACTIVITY SNOW,,,"***  <PLS>       LAT     MELEV     SHADE    SNOWCF    COVIND     KMELT     TBASE
+*** x -  x   degrees       (m)                          (mm)  (mm/d.C)       (C)",*** First group of SNOW parameters.
+PERLND,SNOW-PARM2,/PERLND/SNOW/PARAMETERS,PERLND SNOW-PARM1,,,"*** <PLS >     RDCSN     TSNOW    SNOEVP    CCFACT    MWATER    MGMELT
+*** x -  x             (deg C)                                (mm/day)",*** Second group of SNOW parameters.
+PERLND,SOIL-DATA,/PERLND/PWATER/PEST,PERLND PWAT-PARM1 IRRGFG,,,"*** <PLS >|           Depths (cm)         |      Bulk density (g/cc)      |
+*** x -  x|Surface   Upper   Lower Groundw|Surface   Upper   Lower Groundw|",*** Soil layer depths and bulk densities (SOIL-DATA).
+PERLND,SOIL-DATA2,/PERLND/PWATER/PARAMETERS,PERLND SOIL-DATA,TRUE,,"***       Wilting point for each soil layer
+*** <PLS >    SWILTP    UWILTP    LWILTP    AWILTP
+*** x -  x   (cm/cm)   (cm/cm)   (cm/cm)   (cm/cm)","*** The wilting point is the minimum moisture fraction (by volume) for
+*** plant uptake to occur from a soil layer when using yield-based uptake
+*** (NUPTFG=1 in Table-type NIT-FLAGS and/or PUPTFG=1 in Table-type PHOS-
+*** PLAGS). It is also used to determine available water capacity if
+*** IRRGFG=2 in Table-type PWAT-PARM1."
+PERLND,SOIL-DATA3,/PERLND/PWATER/PARAMETERS,PERLND SOIL-DATA,TRUE,,"***       Field capacity for each soil layer
+*** <PLS >    SFDCAP    UFDCAP    LFDCAP    AFDCAP
+*** x -  x   (cm/cm)   (cm/cm)   (cm/cm)   (cm/cm)","*** The field capacity is the maximum moisture fraction (by volume) that
+*** can be stored in a soil layer without gravity drainage. It is used to
+*** determine available water capacity if IRRGFG=2 in Table-type PWAT-
+*** PARM1."
+PERLND,TRAC-AD-FLAGS,/PERLND/TRACER/FLAGS,PERLND TRAC-ID,,,"Atmospheric Deposition Flags ***
+*** <PLS > <surf> <uppr>
+*** x -  x <F><C> <F><C>",*** Tracer atmospheric deposition flags.
+PERLND,TRAC-ID,/PERLND/TRACER/PARAMETERS,,,,"*** <PLS >      Name of tracer
+*** x -  x              TRACID",*** Name of conservative (tracer) substance.
+PERLND,TRAC-SUBSTOR,/PERLND/TRACER/PARAMETERS,PERLND TRAC-ID,,,"*** <PLS >Initial storage of tracer material in subsoil layers (kg/ha)
+*** x -  x     LTRSU     ATRSU","*** This table specifies the initial storage of tracer (conservative the
+*** lower and groundwater layers."
+PERLND,TRAC-TOPSTOR,/PERLND/TRACER/PARAMETERS,PERLND TRAC-ID,,,"*** <PLS >Initial storage of tracer material in topsoil  (kg/ha)
+*** x -  x     STRSU     UTRSU     ITRSU","*** This table specifies the initial storage of tracer (conservative in
+*** the surface, upper principal and upper transitory storages."
+PERLND,UZSN-LZSN,/PERLND/MSTLAY/PARAMETERS,,,,"*** <PLS >    UZSN    LZSN    SURS
+*** x -  x    (mm)    (mm)    (mm)","*** Values of UZSN, LZSN and initial surface storage (section MSTLAY).
+*** This table is only required if section PWATER is inactive."
+PERLND,VUZFG,/PERLND/MSTLAY/FLAGS,,TRUE,,"*** <PLS >VUZFG
+*** x -  x","*** Variable upper zone flag (section MSTLAY). This table is only required
+*** if section PWATER is inactive."
+PLTGEN,CURV-DATA,/PLTGEN/PLTGEN/PARAMETERS,,,,"  Plot-opn*** Curve label      Line Intg  Col Tran
+*** x -  x                     type  eqv code code",*** Data for each curve on the plot.   Repeats for each curve on the plot.
+PLTGEN,GEN-LABELS,/PLTGEN/PLTGEN/PARAMETERS,,,,"  Plot-opn ***
+*** x -  x  General title                                   Y-axis label",*** General plot labels.
+PLTGEN,PLOTINFO,/PLTGEN/PLTGEN/PARAMETERS,,,,"  Plot-opn ***
+*** x -  x FILE  NPT  NMN LABL  PYR PIVL TYPE",*** General plot information.
+PLTGEN,SCALING,/PLTGEN/PLTGEN/PARAMETERS,,,,"  Plot-opn***   YMIN      YMAX     IVLIN    THRESH
+*** x -  x                        ivl/in",*** Scaling information for plots.
+RCHRES,ACID-FLAGS,/RCHRES/ACIDPH/FLAGS,,,,"    RCHRES AC01 AC02 AC03 AC04 AC05 AC06 AC07 AC08 AC09 AC10 AC11 AC12 AC13 A***
+*** x -  x",*** Acid mine flags
+RCHRES,ACID-INIT,/RCHRES/ACIDPH/STATES,,,,"    RCHRES***ACCONC1   ACCONC2   ACCONC3   ACCONC4   ACCONC5   ACCONC6   ACCONC7
+*** x -  x",*** Acid mine initial values
+RCHRES,ACID-PARMS,/RCHRES/ACIDPH/PARAMETERS,,,,"    RCHRES***ACPARM1   ACPARM2   ACPARM3   ACPARM4   ACPARM5   ACPARM6   ACPARM7
+*** x -  x ",*** Acid mine parameters
+RCHRES,ACTIVITY,/RCHRES/GENERAL/ACTIVITY,,,,"*** RCHRES  Active sections
+*** x -  x HYFG ADFG CNFG HTFG SDFG GQFG OXFG NUFG PKFG PHFG",*** Active sections of RCHRES.
+RCHRES,ADCALC-DATA,/RCHRES/ADCALC/PARAMETERS,,,,"*** RCHRES  Data for section ADCALC
+*** x -  x     CRRAT       VOL (Mm3)",*** Data for section ADCALC.
+RCHRES,BED-INIT,/RCHRES/SEDTRN/STATES,RCHRES SED-GENPARM,,,"*** RCHRES    BEDDEP  Initial bed composition
+*** x -  x       (m)      Sand      Silt      Clay",*** Initial fractions of bed sediment.
+RCHRES,BENAL-FLAGS,/RCHRES/PLANK/FLAGS,,,,"*** RCHRES Benthic algae flags
+*** x -  x NUMB BINV NFX1 NFX2 NFX3 NFX4",*** Benthic algae flags - used only when BALFG=2 in PLNK-FLAGS
+RCHRES,BENAL-GRAZE,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES    CREMVL     CMMBI      BINV    TCGRAZ
+*** x -  x mgA/mgI/yr   mgA/m2    mgI/m2                       ",*** Optional benthic algae grazing parameters.
+RCHRES,BENAL-GROW,/RCHRES/PLANK/PARAMETERS,,,,"    RCHRES*** MBALGR    TCBALG     CMMNB     CMMPB     CMMD1     CMMD2     CSLIT
+*** x -  x       /hr                mg/l      mg/l               mg/m2    ly/min",*** Species-specific benthic algae growth parameters.
+RCHRES,BENAL-INIT,/RCHRES/PLANK/STATES,,,,"*** RCHRES    BENAL1    BENAL2    BENAL3    BENAL4
+*** x -  x     mg/m2     mg/m2     mg/m2     mg/m2","*** Initial benthic algae conditions, if multiple species are simulated -
+*** i.e. BALFG=2 and NUMBAL > 1."
+RCHRES,BENAL-LIGHT,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES    CTRBQ1    CTRBQ2    CKTRB1    CKTRB2
+*** x -  x   NTU/cms                  /m",*** Optional benthic algae light extinction parameters for SDLTFG=2.
+RCHRES,BENAL-PARM,/RCHRES/PLANK/PARAMETERS,,,,"    RCHRES***   MBAL    CFBALR    CFBALG    MINBAL     CAMPR     FRAVL    NMAXFX
+*** x -  x     mg/m2                         mg/m2      mg/l                mg/l",*** General benthic algae parameters.
+RCHRES,BENAL-RESSCR,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES    BALR20    TCBALR    CSLOF1   CSLOF2    GRORES
+*** x -  x       /hr                 /hr",*** Species-specific benthic algae respiration and scour parameters.
+RCHRES,BENAL-RIFF1,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES     FRRIF      CMMV    RIFCQ1    RIFCQ2    RIFCQ3
+*** x -  x                 m/s       cms       cms       cms",*** First group of riffle parameters for benthic algae.
+RCHRES,BENAL-RIFF2,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES RIFVEL1 RIFVEL2 RIFVEL3 RIFVEL4 RIFDEP1 RIFDEP2 RIFDEP3 RIFDEP4
+*** x -  x                                                  ",*** Second group of riffle parameters for benthic algae.
+RCHRES,BENTH-FLAG,/RCHRES/RQUAL/FLAGS,,,,"*** RCHRES  Benthic release flag
+*** x -  x BENF",*** Benthic release flag (RQUAL).
+RCHRES,BINARY-INFO,/RCHRES/GENERAL/BINOUT,,,,"*** RCHRES  Binary Output level flags
+*** x -  x HYDR ADCA CONS HEAT  SED  GQL OXRX NUTR PLNK PHCB PIVL  PYR","*** Table of binary output level flags for RCHRES. HSPF permits the user
+*** to vary the output level (maximum frequency) for the various active
+*** sections of an operation. 2 means every PIVL intervals, 3 means
+*** every day, 4 means every month, 5 means every year, 6 means never."
+RCHRES,CONDUIT-PARM,/RCHRES/DYNAMIC/PARAMETERS,,,,"***        FROM   TO       LEN      MANN     INLET    OUTLET      INIT
+*** RCHRES NODE NODE                        OFFSET    OFFSET      FLOW
+*** x -  x                 (m)                 (m)       (m)     (cms)",
+RCHRES,CONDUIT-XS,/RCHRES/DYNAMIC/PARAMETERS,,,,"*** RCHRES
+*** x -  x                TYPE     GEOM1     GEOM2     GEOM3     GEOM4      ",*** Cross-section data for a conduit segment.
+RCHRES,CONS-AD-FLAGS,/RCHRES/CONS/FLAGS,,,,"***                        Atmospheric Deposition Flags
+    RCHRES  CONS1  CONS2  CONS3  CONS4  CONS5  CONS6  CONS7  CONS8  CONS9 CON***
+*** x -  x <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C>",*** Conservative constituent atmospheric deposition flags.
+RCHRES,CONS-DATA,/RCHRES/CONS/CONS1,,,,"*** RCHRES
+*** x -  x        Substance-id      Conc        ID      CONV     QTYID",*** Information about one conservative substance.
+RCHRES,CONV-VAL1,/RCHRES/NUTRX/PARAMETERS,,,,"*** RCHRES      CVBO     CVBPC     CVBPN    BPCNTC
+*** x -  x     mg/mg  mols/mol  mols/mol",*** Conversion factors (NUTRX section).
+RCHRES,DW-POLLUTANT,/RCHRES/DYNAMIC/PARAMETERS,,,,"*** RCHRES      NAME     UNITS    KDECAY
+*** x -  x                       (1/day)",*** Dynamic wave pollutant data.
+RCHRES,DYNAMIC-WAVE,/RCHRES/DYNAMIC/PARAMETERS,,,,"*** RCHRES  TIMESTEP NCONDUITS    NNODES     FUNIT  NWR  NOR WQFG
+*** x -  x     (sec)",*** Properties of the dynamic wave routing in RCHRES.
+RCHRES,ELEV,/RCHRES/OXRX/PARAMETERS,,,,"*** RCHRES      ELEV
+*** x -  x       (m)",*** RCHRES elevation above sea level.
+RCHRES,GEN-INFO,/RCHRES/GENERAL/INFO,,,,"***              Name        Nexits   Unit Systems   Printer
+*** RCHRES                               t-series  Engl Metr LKFG
+*** x -  x                                 in  out",*** General information for RCHRES.
+RCHRES,GQ-AD-FLAGS,/RCHRES/GQUAL/FLAGS,,,,"***        Atmospheric Deposition Flags
+*** RCHRES GQUAL1 GQUAL2 GQUAL3 GQUAL4 GQUAL5 GQUAL6 GQUAL7
+*** x -  x <F><C> <F><C> <F><C> <F><C> <F><C> <F><C> <F><C>",
+RCHRES,GQ-ADRATE,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES         Adsorption/desorption rate parameters (/day)
+*** x -  x ADPM(1,2) ADPM(2,2) ADPM(3,2) ADPM(4,2) ADPM(5,2) ADPM(6,2)",*** Adsorption /desorption rate parameters.
+RCHRES,GQ-ADTHETA,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES     Adsorption/desorption temp. correction parameters
+*** x -  x ADPM(1,3) ADPM(2,3) ADPM(3,3) ADPM(4,3) ADPM(5,3) ADPM(6,3)",*** Adsorption/desorption temperature correction parameters.
+RCHRES,GQ-ALPHA,/RCHRES/GQUAL/ALPHA,,,,"***          Values of base absorbance coefficient (/cm)
+***               K1        K2        K3        K4        K5        K6        K7
+    RCHRES***     K8        K9       K10       K11       K12       K13       K14
+*** x -  x       K15       K16       K17       K18","*** Values of base absorbance coeff (/cm) for each of the 18 light
+*** wavelengths.  When an entry has to be continued onto more than 1 line:
+*** 1) no blank or ""comment"" lines may be put between any of the lines for
+*** a continued entry.  Put all comments ahead of the entry, 2) The
+*** <range> specfication must be repeated for each line onto which the
+*** entry is continued."
+RCHRES,GQ-BIOPM,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES    BIOCON     THBIO       BIO
+*** x -  x  1/mg/day                mg/l",*** Biodegradation parameters.
+RCHRES,GQ-CFGAS,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES     CFGAS
+*** x -  x",*** Ratio of volatilization to oxygen reaeration.
+RCHRES,GQ-CLDFACT,/RCHRES/GQUAL/KCLD,,,,"***          Values of light extinction efficiency of cloud cover
+***               F1        F2        F3        F4        F5        F6        F7
+    RCHRES***     F8        F9       F10       F11       F12       F13       F14
+*** x -  x       F15       F16       F17       F18","*** Values of light extinction efficiency of cloud cover, for each of the
+*** 18 light wavelengths: When an entry has to be continued onto more
+*** than 1 line: 1) no blank or ""comment"" lines may be put between any of
+*** the lines for a continued entry.  Put all comments ahead of the entry,
+*** 2) The <range> specfication must be repeated for each line onto which
+*** the entry is continued."
+RCHRES,GQ-DAUGHTER,/RCHRES/GQUAL/DAUGHTER,,,,"***           Relationship between parent and daughter compounds.
+***             ZERO       2F1       3F1       4F1       5F1       6F1       7F1
+***             ZERO      ZERO       3F2       4F2       5F2       6F2       7F2
+***             ZERO      ZERO      ZERO       4F3       5F3       6F3       7F3
+***             ZERO      ZERO      ZERO      ZERO       5F4       6F4       7F4
+***             ZERO      ZERO      ZERO      ZERO      ZERO       6F5       7F5
+    RCHRES***   ZERO      ZERO      ZERO      ZERO      ZERO      ZERO       7F6
+*** x -  x      ZERO      ZERO      ZERO      ZERO      ZERO      ZERO      ZER0","*** This table-type specifies the relationship between parent and daughter
+*** compounds.  The table must be repeated in sequence for each decay
+*** process that produces ""daughter"" quals from decay of ""parent"" quals.
+*** The proper sequence is : 1-hydrolysis, 2-oxidation by free radical
+*** oxygen, 3-photolysis, 4-volatilization, 5-biodegradation, 6-general
+*** first order decay. If some processes are not active, then dummy tables
+*** are used to preserve this order.  In this table data has to be
+*** specified using one row per qual.  Extra rows will be ignored.
+*** Missing rows will be filled in with zeroes."
+RCHRES,GQ-DELTA,/RCHRES/GQUAL/DELTA,,,,"***          Values of phytoplankton absorbance coefficient (l/mg.cm)
+***               K1        K2        K3        K4        K5        K6        K7
+    RCHRES***     K8        K9       K10       K11       K12       K13       K14
+*** x -  x       K15       K16       K17       K18","*** Values of phytoplankton absorbance coefficient (l/mg.cm). When an
+*** entry has to be continued onto more than 1 line: 1) no blank or
+*** ""comment"" lines may be put between any of the lines for a continued
+*** entry.  Put all comments ahead of the entry, 2) The <range>
+*** specfication must be repeated for each line onto which the entry is
+*** continued."
+RCHRES,GQ-FLG2,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES HDRL OXID PHOT VOLT BIOD  GEN SBMS
+*** x -  x",*** Second set of flags for a qual.
+RCHRES,GQ-GAMMA,/RCHRES/GQUAL/GAMMA,,,,"***          Values sediment absorbance coefficient (l/mg.cm)
+***               K1        K2        K3        K4        K5        K6        K7
+    RCHRES***     K8        K9       K10       K11       K12       K13       K14
+*** x -  x       K15       K16       K17       K18","*** Values of sediment absorbance coeff (l/mg.cm). When an entry has to be
+*** continued onto more than 1 line: 1) no blank or ""comment"" lines may be
+*** put between any of the lines for a continued entry.  Put all comments
+*** ahead of the entry, 2) The <range> specfication must be repeated for
+*** each line onto which the entry is continued."
+RCHRES,GQ-GENDATA,/RCHRES/GQUAL/PARAMETERS,,,,"*** RCHRES NGQL TPFG PHFG ROFG CDFG SDFG PYFG  LAT
+*** x -  x                                     deg",*** General input for Section GQUAL.
+RCHRES,GQ-GENDECAY,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES    FSTDEC     THFST
+*** x -  x    (/day)","*** Parameters for ""general"" decay."
+RCHRES,GQ-HYDPM,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES        KA        KB        KN     THHYD
+*** x -  x    /M-sec    /M-sec      /sec",*** Hydrolysis parameters.
+RCHRES,GQ-KD,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES                  Partition coefficients (l/mg)
+*** x -  x ADPM(1,1) ADPM(2,1) ADPM(3,1) ADPM(4,1) ADPM(5,1) ADPM(6,1)",*** Partition coefficients.
+RCHRES,GQ-PHOTPM,/RCHRES/GQUAL/PHOTPM,,,,"***               K1        K2        K3        K4        K5        K6        K7
+    RCHRES***     K8        K9       K10       K11       K12       K13       K14
+*** x -  x       K15       K16       K17       K18       PHI     THETA","*** Parameters for photolysis. **NOTE** 1. No blank or ""comment"" lines may
+*** be put between any of the lines for a continued entry.  Put all
+*** comments ahead of the entry.  2. The <range> specification must be
+*** repeated for each line onto which the entry is continued."
+RCHRES,GQ-QALDATA,/RCHRES/GQUAL/GQUAL1,,,,"*** RCHRES                GQID      DQAL    CONCID      CONV     QTYID
+*** x -  x                        concid",*** Data for a generalized quality constituent (qual).
+RCHRES,GQ-QALFG,/RCHRES/GQUAL/GQUAL1,,,,"*** RCHRES HDRL OXID PHOT VOLT BIOD  GEN SDAS
+*** x -  x",*** First set of flags for a qual.
+RCHRES,GQ-ROXPM,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES       KOX      THOX
+*** x -  x    /M.sec",*** Parameters for free radical oxidation.
+RCHRES,GQ-SEDCONC,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES  Initial concentrations on sediment (concu/mg)
+*** x -  x     SQAL1     SQAL2     SQAL3     SQAL4     SQAL5     SQAL6",*** Initial concentrations on sediment.
+RCHRES,GQ-SEDDECAY,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES     KSUSP    THSUSP      KBED     THBED
+*** x -  x      /day                /day",*** Parameters for decay of contaminant adsorbed to sediment.
+RCHRES,GQ-VALUES,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES      TWAT     PHVAL       ROC       CLD     SDCNC       PHY
+*** x -  x     deg C              mole/l    tenths      mg/l      mg/l",*** Initial values for inputs which are constant (GQUAL).
+RCHRES,HEAT-INIT,/RCHRES/HTRCH/STATES,,,,"*** RCHRES        TW    AIRTMP
+*** x -  x   (deg C)   (deg C)",*** Initial conditions for section HTRCH.
+RCHRES,HEAT-PARM,/RCHRES/HTRCH/PARAMETERS,,,,"*** RCHRES      ELEV     ELDAT    CFSAEX    KATRAD     KCOND     KEVAP
+*** x -  x       (m)       (m)",*** Parameters for section HTRCH.
+RCHRES,HT-BED-DELH,/RCHRES/HTRCH/HT_BED_DELH,,,,"***          Heat fluxes for Jobson bed conductance method (kcal/m2.C.ivl)
+***             DELH      DELH      DELH      DELH      DELH      DELH      DELH
+    RCHRES***      1         2         3         4         5         6         7
+*** x -  x         8         9        10        11        12        13      etc.",
+RCHRES,HT-BED-DELTT,/RCHRES/HTRCH/HT_BED_DELTT,,,,"***        Initial temp differences for Jobson bed conductance method (deg C)
+***            DELTT     DELTT     DELTT     DELTT     DELTT     DELTT     DELTT
+    RCHRES***      1         2         3         4         5         6         7
+*** x -  x         8         9        10        11        12        13      etc.",
+RCHRES,HT-BED-FLAGS,/RCHRES/HTRCH/FLAGS,,,,"*** RCHRES Bed Heat Conductance Flags
+*** x -  x BDFG TGFG TSTP",
+RCHRES,HT-BED-PARM,/RCHRES/HTRCH/PARAMETERS,,,,"***        Bed Heat Conduction Parameters for Single and Two-layer Methods
+*** RCHRES    MUDDEP     TGRND      KMUD     KGRND
+*** x -  x       (m)   (deg C)      (kcal/m2/C/hr)",
+RCHRES,HYDR-CATEGORY,/RCHRES/HYDR/PARAMETERS,,,,"***          Categories specified for Outflows, Precipitation and Evaporation
+*** RCHRES Categories associated with:
+*** x -  x prec evap  fv1  fv2  fv3  fv4  fv5   gt",
+RCHRES,HYDR-CDEMAND,/RCHRES/HYDR/PARAMETERS,,,,"***        Category Priorities and Initial Values for G(T) Demands
+*** RCHRES   c x  Priority  COTDGT   c x  Priority  COTDGT
+*** x -  x      (yyyy/mm/dd)(m3/s)      (yyyy/mm/dd)(m3/s)",
+RCHRES,HYDR-CEVAP,/RCHRES/HYDR/PARAMETERS,,,,"*** RCHRES  Category Fractions and Priorities for Evaporation
+*** x -  x   c pr  frac   c pr  frac   c pr  frac   c pr  frac   c pr  frac",
+RCHRES,HYDR-CFVOL,/RCHRES/HYDR/PARAMETERS,,,,"*** RCHRES  Category Fractions and Priorities for F(VOL) Outflow
+*** x -  x   c x pr  frac   c x pr  frac   c x pr  frac   c x pr  frac",
+RCHRES,HYDR-CINIT,/RCHRES/HYDR/STATES,,,,"    RCHRES  Initial Category Storage Fractions ***
+*** x -  x   c cfrac   c cfrac   c cfrac   c cfrac   c cfrac   c cfrac   c cfrac",
+RCHRES,HYDR-CPREC,/RCHRES/HYDR/PARAMETERS,,,,"    RCHRES  Category Fractions for Precipitation ***
+*** x -  x   c  frac   c  frac   c  frac   c  frac   c  frac   c  frac   c  frac",
+RCHRES,HYDR-INIT,/RCHRES/HYDR/STATES,RCHRES HYDR-PARM2,,,"***       Initial conditions for HYDR section
+    RCHRES***    VOL  CAT Initial value  of COLIND     initial  value  of OUTDGT
+*** x -  x     Mm3      for each possible   exit  for each possible exit,m3",*** Initial conditions for HYDR section (RCHRES).
+RCHRES,HYDR-IRRIG,/RCHRES/HYDR/PARAMETERS,,,,"***       Irrigation withdrawal parameters
+*** RCHRES    IREXIT    IRMINV
+*** x -  x               (Mm3)","*** These parameters are used when irrigation withdrawals for a PERLND are
+*** to be made from this RCHRES."
+RCHRES,HYDR-PARM1,/RCHRES/HYDR/PARAMETERS,RCHRES HYDR-PARM2,,,"***       Flags for HYDR section
+    RCHRES  VC A1 A2 A3  ODFVFG for each *** ODGTFG for each***  FUNCT  for each
+*** x -  x  FG FG FG FG  possible   exit *** possible   exit     possible   exit",*** Flags for HYDR section (RCHRES).
+RCHRES,HYDR-PARM2,/RCHRES/HYDR/PARAMETERS,,,,"*** RCHRES FTBW FTBU       LEN     DELTH     STCOR        KS      DB50
+*** x -  x                (km)       (m)       (m)                (mm)",*** Parameters for HYDR section (RCHRES).
+RCHRES,MON-BINV,/RCHRES/PLANK/MONTHLY/BINV,,,,"*** RCHRES   Values of benthic invertebrate density (mg/m2)
+*** x -  x   B1   B2   B3   B4   B5   B6   B7   B8   B9  B10  B11  B12","*** Monthly values of benthic invertebrate density; input only if
+*** BINVFG=3 in Table-type BENAL-FLAGS"
+RCHRES,MON-BIO,/RCHRES/GQUAL/GQUAL,,,,"*** RCHRES  Monthly values of biomas (mg/l)
+*** x -  x  BM1  BM2  BM3  BM4  BM5  BM6  BM7  BM8  BM9 BM10 BM11 BM12","*** Monthly values of biomass.  This table must be included in the UCI
+*** only if GQPM2(7) is assigned a value of 3 in Table- type GQ-FLG2."
+RCHRES,MON-CLOUD,/RCHRES/GQUAL/MONTHLY/CLOUD,,,,"*** RCHRES   Values of cloud cover (tenths)
+*** x -  x   C1   C2   C3   C4   C5   C6   C7   C8   C9  C10  C11  C12","*** Monthly values of average cloud cover; input only if CLDFG=3
+*** in Table-type GQ-GENDATA."
+RCHRES,MON-CONVF,/RCHRES/HYDR/MONTHLY/CONVF,RCHRES HYDR-PARM2,,,"*** RCHRES  Monthly f(VOL) adjustment factors
+*** x -  x  JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC",*** Monthly values of F(VOL) adjustment factors at start of each mon
+RCHRES,MON-HT-TGRND,/RCHRES/HTRCH/MONTHLY/TGRND,,,,"*** RCHRES  Monthly values of ground temperatures (deg C)
+*** x -  x  TG1  TG2  TG3  TG4  TG5  TG6  TG7  TG8  TG9 TG10 TG11 TG12","*** Monthly ground temperatures; input only if BEDFLG = 1 or 2, and
+*** TGFLG = 3 in Table-type HT-BED-FLAGS."
+RCHRES,MON-PHVAL,/RCHRES/NUTRX/MONTHLY/PHVAL,,,,"*** RCHRES  Monthly values of pH
+*** x -  x  PH1  PH2  PH3  PH4  PH5  PH6  PH7  PH8  PH9 PH10 PH11 PH12","*** Monthly values of pH; input only if PHFLAG=3 in Table-type GQ-
+*** GENDATA."
+RCHRES,MON-PHYTO,/RCHRES/GQUAL/MONTHLY/PHYTO,,,,"*** RCHRES   Values of phytoplankton concentration (mg/l)
+*** x -  x   P1   P2   P3   P4   P5   P6   P7   P8   P9  P10  P11  P12","*** Monthly values of phytoplankton concentration; input only if
+*** PHYTFG=3 in Table-type GQ-GENDATA."
+RCHRES,MON-ROXYGEN,/RCHRES/GQUAL/MONTHLYS,,,,"*** RCHRES  Monthly values of free radical oxygen (mole/l)
+*** x -  x  OX1  OX2  OX3  OX4  OX5  OX6  OX7  OX8  OX9 OX10 OX11 OX12","*** Monthly values of free radical oxygen concentration; input only if
+*** ROXFG=3 in Table-type GQ-GENDATA."
+RCHRES,MON-SEDCONC,/RCHRES/GQUAL/MONTHLYS,,,,"*** RCHRES  Values of sediment concentrations (mg/l)
+*** x -  x  SC1  SC2  SC3  SC4  SC5  SC6  SC7  SC8  SC9 SC10 SC11 SC12","*** Monthly average suspended sediment concentration values; input
+*** only if SDFG=3 in Table-type GQ-GENDATA."
+RCHRES,MON-WATEMP,/RCHRES/GQUAL/MONTHLYS,,,,"*** RCHRES  Monthly values of water temperature (deg C)
+*** x -  x   T1   T2   T3   T4   T5   T6   T7   T8   T9  T10  T11  T12","*** Monthly values of water temperature; input only if TEMPFG=3 in Table-
+*** type GQ-GENDATA."
+RCHRES,NCONS,/RCHRES/CONS/PARAMETERS,,,,"*** RCHRES
+*** x -  xNCONS",*** Number of conservative constituents simulated in RCHRES.
+RCHRES,NODE-PARM,/RCHRES/DYNAMIC/PARAMETERS,,,,"*** RCHRES              INVERT       MAX      INIT    PONDED    INFLOW
+*** x -  x      NODE      ELEV     DEPTH     DEPTH      AREA    TIMSER
+***                        (m)       (m)       (m)      (m2)   WQ  VOL",
+RCHRES,NUT-AD-FLAGS,/RCHRES/NUTRX/FLAGS,,,,"***        Atmospheric Deposition Flags
+*** RCHRES  NO3    NH3    PO4
+*** x -  x <F><C> <F><C> <F><C>",
+RCHRES,NUT-ADSINIT,/RCHRES/NUTRX/STATES,,,,"*** RCHRES        Initial suspended NH4 and PO4 concentrations (mg/kg)
+*** x -  x  NH4-sand  NH4-silt  NH4-clay  PO4-sand  PO4-silt  PO4-clay",*** Initial Adsorbed concs.
+RCHRES,NUT-ADSPARM,/RCHRES/NUTRX/PARAMETERS,,,,"*** RCHRES       Partition coefficients for NH4 AND PO4  (ml/g)
+*** x -  x  NH4-sand  NH4-silt  NH4-clay  PO4-sand  PO4-silt  PO4-clay",*** Partition coefficients for NH4 AND PO4 (ml/g)
+RCHRES,NUT-BEDCONC,/RCHRES/NUTRX/PARAMETERS,,,,"*** RCHRES       Bed concentrations of NH4 & PO4 (mg/kg)
+*** x -  x  NH4-sand  NH4-silt  NH4-clay  PO4-sand  PO4-silt  PO4-clay",*** Bed concentrations of NH4 & PO4 (mg/kg)
+RCHRES,NUT-BENPARM,/RCHRES/NUTRX/PARAMETERS,,,,"*** RCHRES  BRNIT(1)  BRNIT(2)  BRPO4(1)  BRPO4(2)     ANAER
+*** x -  x  mg/m2.hr  mg/m2.hr  mg/m2.hr  mg/m2.hr      mg/l",*** Nutrient benthic parameters (NUTRX section).
+RCHRES,NUT-DINIT,/RCHRES/NUTRX/STATES,,,,"*** RCHRES       NO3       TAM       NO2       PO4
+*** x -  x      mg/l      mg/l      mg/l      mg/l",*** Initial dissolved concs.
+RCHRES,NUT-FLAGS,/RCHRES/NUTRX/FLAGS,,,,"*** RCHRES  Nutrient flags
+*** x -  x  NH3  NO2  PO4  AMV  DEN ADNH ADPO PHFL",*** Nutrient flags (RCHRES).
+RCHRES,NUT-NH3VOLAT,/RCHRES/NUTRX/PARAMETERS,,,,"*** RCHRES    EXPNVG    EXPNVL
+*** x -  x",*** NH3 volatilization parms.
+RCHRES,NUT-NITDENIT,/RCHRES/NUTRX/PARAMETERS,,,,"*** RCHRES    KTAM20    KNO220     TCNIT    KNO320     TCDEN    DENOXT
+*** x -  x       /hr       /hr                 /hr                mg/l",*** Nitrif/denitrif parms.
+RCHRES,ORIFICE-PARM,/RCHRES/DYNAMIC/PARAMETERS,,,,"*** RCHRES FROM   TO      TYPE    OFFSET        CD      FLAP      ORAT
+*** x -  x NODE NODE                 (m)                          (hr) ",
+RCHRES,ORIFICE-XS,/RCHRES/DYNAMIC/PARAMETERS,,,,"*** RCHRES
+*** x -  x                TYPE     GEOM1     GEOM2     GEOM3     GEOM4      ",*** Cross-section data for an orifice.
+RCHRES,OX-BENPARM,/RCHRES/OXRX/PARAMETERS,,,,"*** RCHRES     BENOD     TCBEN     EXPOD  BRBOD(1)  BRBOD(2)   EXPREL
+*** x -  x  mg/m2.hr                      mg/m2.hr  mg/m2.hr",*** Oxygen benthic parameters.
+RCHRES,OX-CFOREA,/RCHRES/OXRX/PARAMETERS,,,,"*** RCHRES  Reaeration correction coefficient
+*** x -  x    CFOREA",*** Lake reaeration correction coefficient.
+RCHRES,OX-FLAGS,/RCHRES/OXRX/FLAGS,,,,"*** RCHRES Oxygen flags
+*** x -  x REAM  DOP",*** Oxygen flags (RCHRES).
+RCHRES,OX-GENPARM,/RCHRES/OXRX/PARAMETERS,,,,"*** RCHRES    KBOD20     TCBOD    KODSET    SUPSAT
+*** x -  x       /hr               m/hr",*** General oxygen parameters (RCHRES).
+RCHRES,OX-INIT,/RCHRES/OXRX/STATES,,,,"*** RCHRES       DOX       BOD     SATDO
+*** x -  x      mg/l      mg/l      mg/l",*** Initial concentrations for section OXRX.
+RCHRES,OX-LEN-DELTH,/RCHRES/OXRX/PARAMETERS,,,,"*** RCHRES       LEN     DELTH
+*** x -  x        km       (m)",*** Length of reach and fall (RCHRES).
+RCHRES,OX-REAPARM,/RCHRES/OXRX/PARAMETERS,,,,"*** RCHRES    TCGINV      REAK    EXPRED    EXPREV
+*** x -  x                 /hr",*** Parameters for user-supplied reaeration formula.
+RCHRES,OX-TCGINV,/RCHRES/OXRX/PARAMETERS,,,,"*** RCHRES  Temperature correction coef
+*** x -  x    TCGINV",*** Owen/Churchill/O'Connor-Dobbins data.
+RCHRES,OX-TSIVOGLOU,/RCHRES/OXRX/PARAMETERS,,,,"*** RCHRES     REAKT    TCGINV
+*** x -  x       /ft",*** Parameters for Tsivoglou calculation.
+RCHRES,PH-INIT,/RCHRES/PHCARB/STATES,,,,"*** RCHRES       TIC       CO2        PH
+*** x -  x      mg/l      mg/l",*** Initial conditions for pH simulation.
+RCHRES,PH-PARM1,/RCHRES/PHCARB/PARAMETERS,,,,"*** RCHRES Flags for pH simulation
+*** x -  x PHCN ALKC",*** Flags for pH simulation.
+RCHRES,PH-PARM2,/RCHRES/PHCARB/PARAMETERS,,,,"*** RCHRES    CFCINV  BRCO2(1)  BRCO2(2)
+*** x -  x            mg/m2.hr  mg/m2.hr",*** Parameters for pH simulation.
+RCHRES,PHYTO-PARM,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES      SEED    MXSTAY      OREF    CLALDH    PHYSET    REFSET
+*** x -  x      mg/l      mg/l      m3/s      ug/l      m/hr      m/hr",*** Phytoplankton parameters.
+RCHRES,PLK-AD-FLAGS,/RCHRES/PLANK/FLAGS,RCHRES PLNK-FLAGS,,,"***        Atmospheric Deposition Flags
+*** RCHRES   ORN    ORP    ORC
+*** x -  x <F><C> <F><C> <F><C>",
+RCHRES,PLNK-FLAGS,/RCHRES/PLANK/FLAGS,,,,"*** RCHRES Plankton flags
+*** x -  x PHYF ZOOF BALF SDLT AMRF DECF NSFG ZFOO  BNP",*** Plankton flags (RCHRES).
+RCHRES,PLNK-INIT,/RCHRES/PLANK/STATES,,,,"*** RCHRES     PHYTO       ZOO     BENAL       ORN       ORP       ORC
+*** x -  x      mg/l     org/l     mg/m2      mg/l      mg/l      mg/l",*** Initial plankton conditions.
+RCHRES,PLNK-PARM1,/RCHRES/PLANK/PARAMETERS,,,,"    RCHRES*** RATCLP    NONREF    LITSED     ALNPR      EXTB     MALGR    PARADF
+*** x -  x                       l/mg.ft                  /m       /hr","*** General plankton parameters, group 1."
+RCHRES,PLNK-PARM2,/RCHRES/PLANK/PARAMETERS,RCHRES PLNK-FLAGS,,,"    RCHRES***  CMMLT      CMMN     CMMNP      CMMP    TALGRH    TALGRL    TALGRM
+*** x -  x    ly/min      mg/l      mg/l      mg/l     deg C     deg C     deg C","*** General plankton parameters, group 2."
+RCHRES,PLNK-PARM3,/RCHRES/PLANK/PARAMETERS,RCHRES PLNK-FLAGS,,,"*** RCHRES     ALR20      ALDH      ALDL     OXALD     NALDH     PALDH
+*** x -  x       /hr       /hr       /hr       /hr      mg/l      mg/l","*** General plankton parameters, group 3."
+RCHRES,PLNK-PARM4,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES    NMINGR    PMINGR    CMINGR    LMINGR     NMINC
+*** x -  x      mg/l      mg/l      mg/l    ly/min      mg/l","*** General plankton parameters, group 4."
+RCHRES,PRINT-INFO,/RCHRES/GENERAL/PRINT,RCHRES ACTIVITY,,,"*** RCHRES  Printout level flags
+*** x -  x HYDR ADCA CONS HEAT  SED  GQL OXRX NUTR PLNK PHCB PIVL  PYR","*** Table of printout level flags for RCHRES. HSPF permits the user to
+*** vary the printout level (maximum frequency) for the various active
+*** sections of an operation. 2 means every PIVL intervals, 3 means
+*** every day, 4 means every month, 5 means every year, 6 means never."
+RCHRES,SAND-PM,/RCHRES/SEDTRN/PARAMETERS,,,,"*** RCHRES         D         W       RHO     KSAND    EXPSND
+*** x -  x      (mm)  (mm/sec)  (gm/cm3)",*** Parameters related to sand.
+RCHRES,SANDFG,/RCHRES/SEDTRN/FLAGS,RCHRES SED-GENPARM,,,"*** RCHRES
+*** x -  x SNDFG",*** Sandload method flag (RCHRES).
+RCHRES,SCOUR-PARMS,/RCHRES/RQUAL/PARAMETERS,,,,"*** RCHRES    SCRVEL    SCRMUL
+*** x -  x     m/sec",*** Benthal scour parameters.
+RCHRES,SED-GENPARM,/RCHRES/SEDTRN/PARAMETERS,,,,"*** RCHRES    BEDWID    BEDWRN       POR
+*** x -  x       (m)       (m)",*** General sediment related parameters.
+RCHRES,SED-HYDPARM,/RCHRES/SEDTRN/PARAMETERS,,,,"*** RCHRES       LEN     DELTH      DB50
+*** x -  x      (km)       (m)      (mm)","*** RCHRES geometrical parameters. This table is only required and read if
+*** Section HYDR is not active. Nornally these parameters are supplied in
+*** Table-type HYDR-PARM2."
+RCHRES,SHADE-PARM,/RCHRES/HTRCH/PARAMETERS,,,,"    RCHRES*** SHADFG     TOPFL     VEGFL      NSSP    LATDEG    LONDEG    LONSTD
+*** x -  x                                             (deg)     (deg)     (deg)",*** Parameters for SHADE calculations in HTRCH.
+RCHRES,SILT-CLAY-PM_clay,/RCHRES/HTRCH/PARAMETERS/CLAY,,,,"*** RCHRES         D         W       RHO     TAUCD     TAUCS         M
+*** x -  x      (mm)  (mm/sec)    gm/cm3     kg/m2     kg/m2  kg/m2.dy",*** Parameters for silt or clay.
+RCHRES,SILT-CLAY-PM_silt,/RCHRES/HTRCH/PARAMETERS/SILT,,,,"*** RCHRES         D         W       RHO     TAUCD     TAUCS         M
+*** x -  x      (mm)  (mm/sec)    gm/cm3     kg/m2     kg/m2  kg/m2.dy",*** Parameters for silt or clay.
+RCHRES,SSED-INIT,/RCHRES/SEDTRN/STATES,RCHRES SED-GENPARM,,,"*** RCHRES     Suspended sed concs (mg/l)
+*** x -  x      Sand      Silt      Clay",*** Initial concentrations of suspended sediment.
+RCHRES,SURF-EXPOSED,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES  Correction factor for solar radiation data
+*** x -  x    CFSAEX",*** Correction factor for solar radiation data.
+RCHRES,WEIR-PARM,/RCHRES/DYNAMIC/PARAMETERS,,,,"*** RCHRES FROM   TO      TYPE    OFFSET        CD FLAP   EC       CD2
+*** x -  x NODE NODE                 (m)     (cms)               (cms) ",
+RCHRES,WEIR-XS,/RCHRES/DYNAMIC/PARAMETERS,,,,"*** RCHRES
+*** x -  x                TYPE     GEOM1     GEOM2     GEOM3     GEOM4      ",*** Cross-section data for a weir.
+RCHRES,ZOO-PARM1,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES    MZOEAT    ZFIL20    ZRES20        ZD      OXZD
+*** x -  x  mg/l.hr l/mgzoo.hr       /hr       /hr       /hr",*** First group of zooplankton parameters.
+RCHRES,ZOO-PARM2,/RCHRES/PLANK/PARAMETERS,,,,"*** RCHRES    TCZFIL    TCZRES    ZEXDEL    ZOMASS
+*** x -  x                                  mg/org",*** Second group of zooplankton parameters.
+REPORT,REPORT-CON,/REPORT/REPORT/PARAMETERS,,,,"  Rept-opn ***
+*** x -  x<-----con-name-----> TRAN SIGD DECP",*** Name and parameters for each constituent.  NCON lines are given.
+REPORT,REPORT-FLAGS,/REPORT/REPORT/FLAGS,,,,"  Rept-opn ***
+*** x -  x REPT NCON NSRC FORM CWID PWID PLIN PCOD  PYR",*** Flags for REPORT Operation.
+REPORT,REPORT-SRC,/REPORT/REPORT/PARAMETERS,,,,"  Rept-opn ***
+*** x -  x<---source-name---->","*** SRCID is an 20-character name for each source.  NSRC lines are input
+*** for each operation."
+REPORT,REPORT-SUMM,/REPORT/REPORT/PARAMETERS,,,,"  Rept-opn ***
+*** x -  x<--src-sum-header--> STRN <--tim-sum-header--> TTRN STTR","*** These parameters describe how the reported values are summarized when
+*** aggregated across time and across sources."
+REPORT,REPORT-TITLE,/REPORT/REPORT/PARAMETERS,,,,"  Rept-opn ***
+*** x -  x<--------------------------title--------------------------->","*** TITLE is the title of the report, to appear at the top of each page."
+SCHEMATIC,,/CONTROL/LINKS,,,,"***<-Volume->                  <--Area-->     <-Volume->  <ML#>
+Ac <Name>***x                  <-factor->     <Name>   x","*** In the SCHEMATIC block the user specifies the global linkages of land
+*** segments with stream reaches and between stream reaches."
+SPEC-ACTIONS,ACTION,/SPEC_ACTIONS/ACTION,,,,,
+SPEC-ACTIONS,DISTRB,/SPEC_ACTIONS/DISTRB,,,,,
+SPEC-ACTIONS,UVNAME,/SPEC_ACTIONS/UVNAME,,,,"*** User-Defined Target Variable Names
+  <****>  <----><-> <----><-><-><-> <---> <-->   <----><-><-><-> <->
+***                   addr                         addr
+***                 <------>                     <------>
+*** kwd   varnam ct  vari  s1 s2 s3  frac oper    vari  s1 s2 s3  frac oper",
+SPEC-ACTIONS,UVQUAN,/SPEC_ACTIONS/UVQUAN,,,,"*User-Defined/Multiple Variable Lines* ***
+***               <addrss>              act
+Action***         <vari><1><2><3> <frc> <  >","*** Special actions block.  Note that the value must be given in the units
+*** used internally for the quantity concerned, because no conversion is
+*** performed when it is read in."

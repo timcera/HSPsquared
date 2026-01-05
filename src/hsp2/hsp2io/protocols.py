@@ -1,10 +1,11 @@
 from enum import Enum
-from typing import Dict, Protocol, Union, runtime_checkable
+from typing import TYPE_CHECKING, Dict, Protocol, Union, runtime_checkable
 
 import numpy as np
 import pandas as pd
 
-from hsp2.hsp2.model import Model
+if TYPE_CHECKING:
+    from hsp2.hsp2.model import Model
 
 TimeSeriesDict = Dict[str, np.float64]
 
@@ -16,12 +17,12 @@ class Category(Enum):
 
 @runtime_checkable
 class SupportsReadParameters(Protocol):
-    def read_parameters(self) -> Model: ...
+    def read_parameters(self) -> "Model": ...
 
 
 @runtime_checkable
-class SupportsWriteUCI(Protocol):
-    def write_uci(self, UCI) -> None: ...
+class SupportsWriteParameters(Protocol):
+    def write_parameters(self, model: "Model") -> None: ...
 
 
 @runtime_checkable

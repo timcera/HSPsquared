@@ -8,7 +8,7 @@ from numpy import fromfile
 from pandas import DataFrame
 
 
-class HBNOutput:
+class HBNReader:
     def __init__(self, file_name: str) -> None:
         self.data_frames = []
         self.file_name = file_name
@@ -39,7 +39,8 @@ class HBNOutput:
         Returns
         -------
         df_summary : DataFrame
-            Summary information of data found in HBN file (also saved to HDF5 file.)
+            Summary information of data found in HBN file (also saved to HDF5
+            file.)
         """
 
         data = fromfile(self.file_name, "B")
@@ -179,3 +180,12 @@ class HBNOutput:
                 dv = time_series.values[row]
                 # f.write(f'{dt},{"{:.2f}".format(dv)}\n')
                 f.write(f"{dt},{dv}\n")
+
+
+def read_hbn_ts(file_name: str) -> DataFrame:
+    reader = HBNReader(file_name)
+    reader.read_data()
+    df_summary = pd.DataFrame(
+        reader.summary, index=reader.summaryindx, columns=reader.summarycols
+    )
+    return df_summary
